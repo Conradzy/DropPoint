@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DropPoint — Smarter Water Delivery</title>
+<link rel="stylesheet" href="droppoint.css">
+<script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     NAVBAR
+══════════════════════════════════════════ -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.5 9 4 13.5 4 16a8 8 0 0 0 16 0c0-2.5-2.5-7-8-14Z"/></svg></div>
+    <span class="nav-logo-name">DropPoint</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#business">For Stations</a></li>
+    <li><a href="#iot">IoT</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <div class="nav-cta">
+    <a href="#pricing" class="btn btn-outline">View Plans</a>
+    <a href="#cta" class="btn btn-primary">Get Started</a>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════
+     HERO
+══════════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
+  <div class="hero-blob hero-blob-3"></div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        Now Available · Philippines
+      </div>
+      <h1 class="hero-title">
+        Smarter Water<br>Delivery Starts<br>with <span>DropPoint</span>
+      </h1>
+      <p class="hero-sub">
+        Find nearby water refilling stations, compare prices, verify quality, schedule deliveries, and help businesses manage operations — all in one platform.
+      </p>
+      <div class="hero-actions">
+        <a href="#cta" class="btn btn-primary btn-lg">
+          <i data-lucide="zap" style="width:18px;height:18px"></i>
+          Get Started
+        </a>
+        <button class="hero-video-btn" onclick="document.getElementById('video').scrollIntoView({behavior:'smooth'})">
+          <div class="hero-video-btn-circle">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </div>
+          <span>Watch the Video</span>
+        </button>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-value">500+</div>
+          <div class="hero-stat-label">Stations Listed</div>
+        </div>
+        <div>
+          <div class="hero-stat-value">12k+</div>
+          <div class="hero-stat-label">Orders Delivered</div>
+        </div>
+        <div>
+          <div class="hero-stat-value">4.9★</div>
+          <div class="hero-stat-label">App Rating</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating UI Cards -->
+    <div class="hero-visual">
+
+      <!-- Map Card -->
+      <div class="hcard hcard-map fade-up">
+        <div class="hcard-title">
+          <i data-lucide="map-pin" style="width:12px;height:12px;color:#22d3ee"></i>
+          Nearby Stations
+        </div>
+        <div class="map-area">
+          <div class="map-grid"></div>
+          <div class="map-road-h"></div>
+          <div class="map-road-v"></div>
+          <div class="map-pin blue"><div class="map-pin-dot"></div></div>
+          <div class="map-pin cyan"><div class="map-pin-dot"></div></div>
+          <div class="map-pin you"><div class="map-pin-dot"></div></div>
+        </div>
+        <div class="station-list">
+          <div class="station-item">
+            <div class="station-dot" style="background:#3b82f6"></div>
+            <div class="station-info">
+              <div class="station-name">AquaFresh Station</div>
+              <div class="station-dist">0.4 km · Open now</div>
+            </div>
+            <div class="station-price">₱25/gal</div>
+          </div>
+          <div class="station-item">
+            <div class="station-dot" style="background:#06b6d4"></div>
+            <div class="station-info">
+              <div class="station-name">PureFlow Refilling</div>
+              <div class="station-dist">0.8 km · Open now</div>
+            </div>
+            <div class="station-price">₱22/gal</div>
+          </div>
+          <div class="station-item">
+            <div class="station-dot" style="background:#10b981"></div>
+            <div class="station-info">
+              <div class="station-name">ClearWater Depot</div>
+              <div class="station-dist">1.2 km · Open now</div>
+            </div>
+            <div class="station-price">₱28/gal</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Delivery Tracking Card -->
+      <div class="hcard hcard-track fade-up fade-up-delay-2">
+        <div class="hcard-title">
+          <i data-lucide="truck" style="width:12px;height:12px;color:#22d3ee"></i>
+          Delivery Tracking
+        </div>
+        <div class="track-status">
+          <div class="track-dot"></div>
+          <div class="track-text">On the way · ETA 8 min</div>
+        </div>
+        <div class="track-steps">
+          <div class="track-step done">
+            <div class="track-step-icon"><i data-lucide="check-circle" style="width:14px;height:14px"></i></div>
+            <div class="track-step-label">Order Confirmed</div>
+          </div>
+          <div class="track-step done">
+            <div class="track-step-icon"><i data-lucide="package" style="width:14px;height:14px"></i></div>
+            <div class="track-step-label">Gallons Prepared</div>
+          </div>
+          <div class="track-step active">
+            <div class="track-step-icon"><i data-lucide="truck" style="width:14px;height:14px"></i></div>
+            <div class="track-step-label">Out for Delivery</div>
+          </div>
+          <div class="track-step pending">
+            <div class="track-step-icon"><i data-lucide="home" style="width:14px;height:14px"></i></div>
+            <div class="track-step-label">Delivered</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Water Quality Card -->
+      <div class="hcard hcard-quality fade-up fade-up-delay-1">
+        <div class="hcard-title">
+          <i data-lucide="activity" style="width:12px;height:12px;color:#22d3ee"></i>
+          Water Quality
+        </div>
+        <div class="quality-score">
+          <div class="quality-badge">✓ Excellent</div>
+        </div>
+        <div class="quality-metrics">
+          <div class="qm">
+            <div class="qm-label">pH</div>
+            <div class="qm-bar"><div class="qm-fill" style="width:72%;background:linear-gradient(90deg,#06b6d4,#2563eb)"></div></div>
+            <div class="qm-val">7.2</div>
+          </div>
+          <div class="qm">
+            <div class="qm-label">TDS</div>
+            <div class="qm-bar"><div class="qm-fill" style="width:48%;background:linear-gradient(90deg,#06b6d4,#2563eb)"></div></div>
+            <div class="qm-val">248</div>
+          </div>
+          <div class="qm">
+            <div class="qm-label">NTU</div>
+            <div class="qm-bar"><div class="qm-fill" style="width:15%;background:linear-gradient(90deg,#10b981,#06b6d4)"></div></div>
+            <div class="qm-val">0.8</div>
+          </div>
+          <div class="qm">
+            <div class="qm-label">°C</div>
+            <div class="qm-bar"><div class="qm-fill" style="width:55%;background:linear-gradient(90deg,#06b6d4,#2563eb)"></div></div>
+            <div class="qm-val">25°</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Wave -->
+<div class="wave" style="background:var(--grad-hero)"><svg viewBox="0 0 1440 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,36 C240,72 480,0 720,36 C960,72 1200,0 1440,36 L1440,72 L0,72 Z" fill="#ffffff"/></svg></div>
+
+<!-- ══════════════════════════════════════════
+     PROBLEM SECTION
+══════════════════════════════════════════ -->
+<section id="problem">
+  <div class="section-inner">
+    <div class="section-header text-center fade-up">
+      <div class="section-label"><i data-lucide="alert-triangle" style="width:12px;height:12px"></i> The Problem</div>
+      <h2 class="section-title">Why is getting water still<br><span>so inconvenient?</span></h2>
+      <p class="section-sub">Millions still struggle to access clean water conveniently. Station owners lack tools to manage and grow efficiently.</p>
+    </div>
+    <div class="problem-grid">
+      <div class="problem-card fade-up">
+        <div class="problem-icon"><i data-lucide="thermometer-sun"></i></div>
+        <h3>Travelling Under Extreme Heat</h3>
+        <p>Customers still carry gallons under the scorching sun with no easy option to order delivery from nearby stations.</p>
+      </div>
+      <div class="problem-card fade-up fade-up-delay-1">
+        <div class="problem-icon"><i data-lucide="clock"></i></div>
+        <h3>Delayed & Unreliable Deliveries</h3>
+        <p>Poor order management at stations leads to missed schedules, long waits, and frustrated customers.</p>
+      </div>
+      <div class="problem-card fade-up fade-up-delay-2">
+        <div class="problem-icon"><i data-lucide="shield-off"></i></div>
+        <h3>Lack of Trust & Transparency</h3>
+        <p>No easy way to verify if a station has valid permits, quality certifications, or safe water lab results.</p>
+      </div>
+      <div class="problem-card fade-up fade-up-delay-3">
+        <div class="problem-icon"><i data-lucide="bar-chart-2"></i></div>
+        <h3>No Tools for Business Growth</h3>
+        <p>Station owners manage orders manually, missing out on sales data, customer insights, and digital reach.</p>
+      </div>
+      <div class="problem-card fade-up fade-up-delay-4">
+        <div class="problem-icon"><i data-lucide="map-off"></i></div>
+        <h3>Hard to Discover Stations</h3>
+        <p>Customers rely on word-of-mouth to find stations. Owners have no digital presence or way to attract more buyers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Wave -->
+<div class="wave" style="background:#fff"><svg viewBox="0 0 1440 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,36 C360,0 1080,72 1440,36 L1440,72 L0,72 Z" fill="#f0f7ff"/></svg></div>
+
+<!-- ══════════════════════════════════════════
+     FEATURES SECTION
+══════════════════════════════════════════ -->
+<section id="features">
+  <div class="section-inner">
+    <div class="section-header text-center fade-up">
+      <div class="section-label"><i data-lucide="sparkles" style="width:12px;height:12px"></i> Customer Features</div>
+      <h2 class="section-title">Everything You Need,<br>in <span>One Smart Platform</span></h2>
+      <p class="section-sub">DropPoint puts every water-related need right at your fingertips — from discovery to doorstep delivery.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feat-card fade-up">
+        <div class="feat-icon fi-blue"><i data-lucide="map-pin"></i></div>
+        <div><h3>Find Nearby Stations</h3><p>Discover verified water refilling stations closest to you on an interactive live map.</p></div>
+      </div>
+      <div class="feat-card fade-up fade-up-delay-1">
+        <div class="feat-icon fi-cyan"><i data-lucide="scale"></i></div>
+        <div><h3>Compare Prices</h3><p>Easily compare gallon prices, delivery fees, and services from multiple stations side by side.</p></div>
+      </div>
+      <div class="feat-card fade-up fade-up-delay-2">
+        <div class="feat-icon fi-teal"><i data-lucide="shield-check"></i></div>
+        <div><h3>Verify Permits & Certificates</h3><p>View official sanitation permits, business licenses, and DOH certificates directly in-app.</p></div>
+      </div>
+      <div class="feat-card fade-up fade-up-delay-3">
+        <div class="feat-icon fi-indigo"><i data-lucide="flask-conical"></i></div>
+        <div><h3>View Water Lab Results</h3><p>Access transparent water quality test reports so you know exactly what you're drinking.</p></div>
+      </div>
+      <div class="feat-card fade-up">
+        <div class="feat-icon fi-blue"><i data-lucide="shopping-cart"></i></div>
+        <div><h3>Order Gallon Refills</h3><p>Order standard gallon refills with one tap and get them delivered to your door.</p></div>
+      </div>
+      <div class="feat-card fade-up fade-up-delay-1">
+        <div class="feat-icon fi-cyan"><i data-lucide="package"></i></div>
+        <div><h3>Bulk Bottled Water</h3><p>Order bulk bottled water for offices, events, or businesses at competitive station rates.</p></div>
+      </div>
+      <div class="feat-card fade-up fade-up-delay-2">
+        <div class="feat-icon fi-teal"><i data-lucide="calendar-clock"></i></div>
+        <div><h3>Schedule Deliveries</h3><p>Set preferred delivery times and get your water when it's most convenient for you.</p></div>
+      </div>
+      <div class="feat-card fade-up fade-up-delay-3">
+        <div class="feat-icon fi-indigo"><i data-lucide="navigation"></i></div>
+        <div><h3>Real-Time Tracking</h3><p>Follow your delivery from station to doorstep with live GPS tracking and ETA updates.</p></div>
+      </div>
+      <div class="feat-card fade-up">
+        <div class="feat-icon fi-blue"><i data-lucide="message-circle"></i></div>
+        <div><h3>In-App Messaging</h3><p>Chat directly with station admins for special requests, delivery updates, or questions.</p></div>
+      </div>
+      <div class="feat-card fade-up fade-up-delay-1">
+        <div class="feat-icon fi-cyan"><i data-lucide="star"></i></div>
+        <div><h3>Reviews & Ratings</h3><p>Leave honest reviews and read real feedback from verified customers before you order.</p></div>
+      </div>
+      <div class="feat-card fade-up fade-up-delay-2">
+        <div class="feat-icon fi-teal"><i data-lucide="sparkles"></i></div>
+        <div><h3>Smart Recommendations</h3><p>Get personalized station suggestions based on your location, preferences, and order history.</p></div>
+      </div>
+      <div class="feat-card fade-up fade-up-delay-3">
+        <div class="feat-icon fi-indigo"><i data-lucide="info"></i></div>
+        <div><h3>Full Station Details</h3><p>See operating hours, available products, delivery range, and more before placing an order.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Wave -->
+<div class="wave" style="background:#f0f7ff"><svg viewBox="0 0 1440 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,36 C240,72 480,0 720,36 C960,72 1200,0 1440,36 L1440,72 L0,72 Z" fill="#ffffff"/></svg></div>
+
+<!-- ══════════════════════════════════════════
+     BUSINESS SECTION
+══════════════════════════════════════════ -->
+<section id="business">
+  <div class="section-inner">
+    <div class="business-grid">
+      <!-- Dashboard mockup -->
+      <div class="biz-dashboard fade-left">
+        <div class="dash-header">
+          <div class="dash-title">Station Dashboard</div>
+          <div class="dash-period">This Month</div>
+        </div>
+        <div class="dash-metrics">
+          <div class="dash-metric">
+            <div class="dm-val">1,248</div>
+            <div class="dm-label">Gallons Delivered</div>
+            <div class="dm-change up"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>+18.4%</div>
+          </div>
+          <div class="dash-metric">
+            <div class="dm-val">₱31.2k</div>
+            <div class="dm-label">Total Revenue</div>
+            <div class="dm-change up"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>+22.1%</div>
+          </div>
+          <div class="dash-metric">
+            <div class="dm-val">94.2%</div>
+            <div class="dm-label">On-Time Rate</div>
+            <div class="dm-change up"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>+3.5%</div>
+          </div>
+          <div class="dash-metric">
+            <div class="dm-val">4.8★</div>
+            <div class="dm-label">Avg. Rating</div>
+            <div class="dm-change up"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>+0.2</div>
+          </div>
+        </div>
+        <div class="dash-chart">
+          <div class="chart-bars" id="chartBars"></div>
+        </div>
+        <div class="dash-orders" style="margin-top:16px">
+          <div style="font-size:.7rem;font-weight:600;color:rgba(255,255,255,.4);margin-bottom:8px;text-transform:uppercase;letter-spacing:.06em">Recent Orders</div>
+          <div class="dash-order-item">
+            <div class="doi-avatar">JR</div>
+            <div class="doi-info"><div class="doi-name">Juan Reyes</div><div class="doi-detail">3 gallons · Barangay 12</div></div>
+            <div class="doi-status delivered">Delivered</div>
+          </div>
+          <div class="dash-order-item">
+            <div class="doi-avatar">ML</div>
+            <div class="doi-info"><div class="doi-name">Maria Lim</div><div class="doi-detail">5 gallons · Purok 3</div></div>
+            <div class="doi-status transit">In Transit</div>
+          </div>
+          <div class="dash-order-item">
+            <div class="doi-avatar">AC</div>
+            <div class="doi-info"><div class="doi-name">Ana Cruz</div><div class="doi-detail">2 gallons · Phase 1</div></div>
+            <div class="doi-status pending">Pending</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="business-content fade-right fade-up-delay-2">
+        <div class="section-label"><i data-lucide="building-2" style="width:12px;height:12px"></i> For Station Owners</div>
+        <h2>Built Not Only for Customers,<br><span style="background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">But for Growing Water Stations</span></h2>
+        <p>DropPoint isn't just an ordering app — it's a complete digital business platform for water refilling station owners who want to grow smarter.</p>
+        <div class="benefit-list">
+          <div class="benefit-item">
+            <div class="benefit-check"><i data-lucide="inbox"></i></div>
+            <div><div class="benefit-item-title">Receive & Manage Orders</div><div class="benefit-item-desc">Accept, track, and fulfill orders digitally. No more paper logs or missed calls.</div></div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-check"><i data-lucide="trending-up"></i></div>
+            <div><div class="benefit-item-title">Sales & Statistics</div><div class="benefit-item-desc">Monitor daily revenue, top products, delivery performance, and growth trends.</div></div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-check"><i data-lucide="map"></i></div>
+            <div><div class="benefit-item-title">Map Visibility & Discovery</div><div class="benefit-item-desc">Appear on the DropPoint map so nearby customers can find and order from you easily.</div></div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-check"><i data-lucide="message-square"></i></div>
+            <div><div class="benefit-item-title">Customer Communication</div><div class="benefit-item-desc">Chat with customers in-app. Handle special requests and build long-term loyalty.</div></div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-check"><i data-lucide="receipt"></i></div>
+            <div><div class="benefit-item-title">Transaction History</div><div class="benefit-item-desc">Full record of every order, payment, and delivery for easy accounting and compliance.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     IOT SECTION
+══════════════════════════════════════════ -->
+<section id="iot">
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
+  <div class="section-inner">
+    <div class="iot-grid">
+      <div class="iot-content fade-up">
+        <div class="section-label"><i data-lucide="wifi" style="width:12px;height:12px"></i> IoT Integration</div>
+        <h2 class="section-title" style="color:#fff">Real-Time Water Quality<br><span>Monitoring with IoT</span></h2>
+        <p>Integrate a smart IoT device at your station to continuously monitor six critical water parameters and share live data with your customers — proving safety in real time.</p>
+        <div class="iot-params">
+          <div class="iot-param">
+            <div class="ip-icon"><i data-lucide="flask-conical"></i></div>
+            <div class="ip-label">pH Level</div>
+            <div class="ip-val">7.2</div>
+            <div class="ip-status">✓ Optimal Range</div>
+          </div>
+          <div class="iot-param">
+            <div class="ip-icon"><i data-lucide="droplets"></i></div>
+            <div class="ip-label">TDS (ppm)</div>
+            <div class="ip-val">248</div>
+            <div class="ip-status">✓ Safe</div>
+          </div>
+          <div class="iot-param">
+            <div class="ip-icon"><i data-lucide="eye"></i></div>
+            <div class="ip-label">Turbidity (NTU)</div>
+            <div class="ip-val">0.8</div>
+            <div class="ip-status">✓ Crystal Clear</div>
+          </div>
+          <div class="iot-param">
+            <div class="ip-icon"><i data-lucide="thermometer"></i></div>
+            <div class="ip-label">Temperature (°C)</div>
+            <div class="ip-val">25°C</div>
+            <div class="ip-status">✓ Normal</div>
+          </div>
+          <div class="iot-param">
+            <div class="ip-icon"><i data-lucide="sun"></i></div>
+            <div class="ip-label">UV Intensity</div>
+            <div class="ip-val">Active</div>
+            <div class="ip-status">✓ Sterilizing</div>
+          </div>
+          <div class="iot-param">
+            <div class="ip-icon"><i data-lucide="gauge"></i></div>
+            <div class="ip-label">Flow Rate (L/min)</div>
+            <div class="ip-val">2.4</div>
+            <div class="ip-status">✓ Normal Flow</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="iot-device fade-right fade-up-delay-2">
+        <div class="iot-device-top">
+          <div class="iot-device-title">DropPoint IoT Monitor</div>
+          <div class="iot-live-badge"><div class="iot-live-dot"></div> Live</div>
+        </div>
+        <div class="iot-gauge-row">
+          <!-- pH Gauge -->
+          <div class="iot-gauge">
+            <div class="gauge-ring">
+              <svg class="gauge-svg" width="64" height="64" viewBox="0 0 64 64">
+                <circle class="gauge-bg" cx="32" cy="32" r="27"/>
+                <circle class="gauge-fill" cx="32" cy="32" r="27" stroke="#06b6d4" stroke-dasharray="169.6" stroke-dashoffset="47"/>
+              </svg>
+              <div class="gauge-text">7.2</div>
+            </div>
+            <div class="gauge-label">pH</div>
+            <div class="gauge-unit" style="color:#06b6d4">Optimal</div>
+          </div>
+          <!-- TDS Gauge -->
+          <div class="iot-gauge">
+            <div class="gauge-ring">
+              <svg class="gauge-svg" width="64" height="64" viewBox="0 0 64 64">
+                <circle class="gauge-bg" cx="32" cy="32" r="27"/>
+                <circle class="gauge-fill" cx="32" cy="32" r="27" stroke="#2563eb" stroke-dasharray="169.6" stroke-dashoffset="88"/>
+              </svg>
+              <div class="gauge-text" style="font-size:.6rem">248</div>
+            </div>
+            <div class="gauge-label">TDS</div>
+            <div class="gauge-unit" style="color:#2563eb">ppm</div>
+          </div>
+          <!-- Turbidity Gauge -->
+          <div class="iot-gauge">
+            <div class="gauge-ring">
+              <svg class="gauge-svg" width="64" height="64" viewBox="0 0 64 64">
+                <circle class="gauge-bg" cx="32" cy="32" r="27"/>
+                <circle class="gauge-fill" cx="32" cy="32" r="27" stroke="#10b981" stroke-dasharray="169.6" stroke-dashoffset="143"/>
+              </svg>
+              <div class="gauge-text" style="font-size:.6rem">0.8</div>
+            </div>
+            <div class="gauge-label">NTU</div>
+            <div class="gauge-unit" style="color:#10b981">Clear</div>
+          </div>
+        </div>
+        <div class="iot-timeline">
+          <div class="iot-timeline-label">pH — Last 24 Hours</div>
+          <div class="timeline-chart" id="iotChart"></div>
+        </div>
+        <div style="margin-top:16px;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.2);border-radius:10px;padding:14px;display:flex;align-items:center;gap:12px">
+          <div style="width:36px;height:36px;background:rgba(16,185,129,.2);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><i data-lucide="shield-check" style="width:18px;height:18px;color:#10b981"></i></div>
+          <div>
+            <div style="font-size:.75rem;font-weight:700;color:#10b981">Water Safety Score: 98/100</div>
+            <div style="font-size:.68rem;color:rgba(255,255,255,.4);margin-top:2px">All parameters within safe thresholds</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Wave -->
+<div class="wave" style="background:linear-gradient(135deg,#020c1b,#04254a)"><svg viewBox="0 0 1440 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,36 C360,0 1080,72 1440,36 L1440,72 L0,72 Z" fill="#f0f7ff"/></svg></div>
+
+<!-- ══════════════════════════════════════════
+     PRICING SECTION
+══════════════════════════════════════════ -->
+<section id="pricing">
+  <div class="section-inner">
+    <div class="section-header text-center fade-up">
+      <div class="section-label"><i data-lucide="tag" style="width:12px;height:12px"></i> Pricing</div>
+      <h2 class="section-title">Simple Pricing That <span>Grows With Your Station</span></h2>
+      <p class="section-sub">Start free. Scale as you grow. No hidden fees — every plan charges only ₱1 per successfully delivered gallon.</p>
+    </div>
+    <div class="pricing-grid">
+      <!-- Free -->
+      <div class="price-card scale-in">
+        <div class="price-plan">Starter</div>
+        <div class="price-name">Free</div>
+        <div class="price-amount">
+          <span class="price-main">₱0</span>
+          <span class="price-period"> / month</span>
+        </div>
+        <div class="price-note">
+          + <strong>₱1</strong> per successfully delivered gallon only
+        </div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li><span class="pf-check"><i data-lucide="check" style="width:10px;height:10px"></i></span>Station listing on map</li>
+          <li><span class="pf-check"><i data-lucide="check" style="width:10px;height:10px"></i></span>Online order management</li>
+          <li><span class="pf-check"><i data-lucide="check" style="width:10px;height:10px"></i></span>In-app messaging with customers</li>
+          <li><span class="pf-check"><i data-lucide="check" style="width:10px;height:10px"></i></span>Customer reviews & ratings</li>
+          <li><span class="pf-check"><i data-lucide="check" style="width:10px;height:10px"></i></span>Real-time delivery tracking</li>
+          <li><span class="pf-check"><i data-lucide="check" style="width:10px;height:10px"></i></span>Permit & certificate display</li>
+          <li><span class="pf-check"><i data-lucide="check" style="width:10px;height:10px"></i></span>Transaction history</li>
+        </ul>
+        <div class="price-cta">
+          <a href="#cta" class="btn btn-outline" style="width:100%;justify-content:center;color:var(--blue);border-color:var(--border)">Get Started Free</a>
+        </div>
+      </div>
+
+      <!-- Smart Station (Featured) -->
+      <div class="price-card featured scale-in fade-up-delay-1">
+        <div class="price-badge">⭐ Most Popular</div>
+        <div class="price-plan">Smart Station</div>
+        <div class="price-name">Smart</div>
+        <div class="price-amount">
+          <span class="price-main">₱15,000</span>
+        </div>
+        <div class="price-note">
+          One-time setup fee · + ₱1 per delivered gallon
+        </div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li><span class="pf-check"><i data-lucide="check" style="width:10px;height:10px"></i></span>Everything in Free</li>
+          <li><span class="pf-check"><i data-lucide="check" style="width:10px;height:10px"></i></span>IoT device integration</li>
+          <li><span class="pf-check"><i data-lucide="check" style="width:10px;height:10px"></i></span>Real-time water quality monitoring</li>
+          <li><span class="pf-check"><i data-lucide="check" style="width:10px;height:10px"></i></span>pH, TDS, turbidity, temp display</li>
+          <li><span class="pf-check"><i data-lucide="check" style="width:10px;height:10px"></i></span>Basic sales statistics</li>
+          <li><span class="pf-check"><i data-lucide="check" style="width:10px;height:10px"></i></span>Quality badge on listing</li>
+          <li><span class="pf-check"><i data-lucide="check" style="width:10px;height:10px"></i></span>Enhanced customer trust signals</li>
+        </ul>
+        <div class="price-cta">
+          <a href="#cta" class="btn btn-primary" style="width:100%;justify-content:center">Contact for Pricing</a>
+        </div>
+      </div>
+
+      <!-- Premium Station -->
+      <div class="price-card scale-in fade-up-delay-2">
+        <div class="price-plan">Premium Station</div>
+        <div class="price-name">Premium</div>
+        <div class="price-amount">
+          <span class="price-main">₱23,000</span>
+        </div>
+        <div class="price-note">
+          One-time setup fee · + ₱1 per delivered gallon
+        </div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li><span class="pf-check"><i data-lucide="check" style="width:10px;height:10px"></i></span>Everything in Smart Station</li>
+          <li><span class="pf-check"><i data-lucide="check" style="width:10px;height:10px"></i></span>Advanced sales insights & reports</li>
+          <li><span class="pf-check"><i data-lucide="check" style="width:10px;height:10px"></i></span>Priority search placement in app</li>
+          <li><span class="pf-check"><i data-lucide="check" style="width:10px;height:10px"></i></span>Highlighted station badge</li>
+          <li><span class="pf-check"><i data-lucide="check" style="width:10px;height:10px"></i></span>Enhanced map visibility</li>
+          <li><span class="pf-check"><i data-lucide="check" style="width:10px;height:10px"></i></span>Dedicated growth support</li>
+          <li><span class="pf-check"><i data-lucide="check" style="width:10px;height:10px"></i></span>Early access to new features</li>
+        </ul>
+        <div class="price-cta">
+          <a href="#cta" class="btn btn-outline" style="width:100%;justify-content:center;color:var(--blue);border-color:var(--border)">Contact for Pricing</a>
+        </div>
+      </div>
+    </div>
+    <p class="per-gallon-note fade-up">
+      💧 <strong>All plans include:</strong> Only ₱1 is charged per successfully delivered gallon. No monthly fees for the Free plan. Transparent, fair, and performance-based pricing.
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     VIDEO SECTION
+══════════════════════════════════════════ -->
+<section id="video">
+  <div class="section-header text-center fade-up" style="padding:0 5% 48px">
+    <div class="section-label" style="background:rgba(34,211,238,.1);border-color:rgba(34,211,238,.2);color:var(--cyan);margin:0 auto 16px"><i data-lucide="play-circle" style="width:12px;height:12px"></i> Promotional Video</div>
+    <h2 class="section-title" style="color:#fff">See DropPoint <span>in Action</span></h2>
+    <p class="section-sub" style="color:rgba(255,255,255,.5);margin:0 auto">Watch how DropPoint transforms water delivery and station management for everyone.</p>
+  </div>
+  <div class="video-wrapper fade-up" style="margin:0 auto;max-width:860px;border-radius:24px;overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,.5)">
+    <iframe src="https://youtu.be/OZQYFbJ5M5c?si=hUC3YiMumdAaiZyJ" title="DropPoint Promotional Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+</section>
+
+<!-- Wave -->
+<div class="wave" style="background:var(--deep)"><svg viewBox="0 0 1440 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,36 C240,72 480,0 720,36 C960,72 1200,0 1440,36 L1440,72 L0,72 Z" fill="#ffffff"/></svg></div>
+
+<!-- ══════════════════════════════════════════
+     TRUST SECTION
+══════════════════════════════════════════ -->
+<section id="trust">
+  <div class="section-inner">
+    <div class="section-header text-center fade-up">
+      <div class="section-label"><i data-lucide="shield" style="width:12px;height:12px"></i> Trust & Safety</div>
+      <h2 class="section-title">Built on <span>Trust, Transparency,</span><br>and Reliability</h2>
+      <p class="section-sub">Every feature in DropPoint is designed to give customers confidence and help stations prove their quality.</p>
+    </div>
+    <div class="trust-grid">
+      <div class="trust-card fade-up">
+        <div class="trust-card-icon"><i data-lucide="badge-check"></i></div>
+        <h3>Verified Permits</h3>
+        <p>Every listed station undergoes permit and business license verification before going live.</p>
+      </div>
+      <div class="trust-card fade-up fade-up-delay-1">
+        <div class="trust-card-icon"><i data-lucide="flask-conical"></i></div>
+        <h3>Lab Test Results</h3>
+        <p>Stations share official water quality test reports so customers can read them anytime.</p>
+      </div>
+      <div class="trust-card fade-up fade-up-delay-2">
+        <div class="trust-card-icon"><i data-lucide="wifi"></i></div>
+        <h3>IoT Live Monitoring</h3>
+        <p>Smart Station and Premium plans display real-time water parameter readings on the listing.</p>
+      </div>
+      <div class="trust-card fade-up fade-up-delay-3">
+        <div class="trust-card-icon"><i data-lucide="star"></i></div>
+        <h3>Verified Reviews</h3>
+        <p>Only customers who completed a delivery can leave a review — no fake ratings, ever.</p>
+      </div>
+      <div class="trust-card fade-up fade-up-delay-4">
+        <div class="trust-card-icon"><i data-lucide="truck"></i></div>
+        <h3>Tracked Every Delivery</h3>
+        <p>Every gallon delivery is tracked end-to-end, timestamped, and logged in transaction history.</p>
+      </div>
+      <div class="trust-card fade-up">
+        <div class="trust-card-icon"><i data-lucide="lock"></i></div>
+        <h3>Secure Communication</h3>
+        <p>All messages between customers and station admins are private and protected in-platform.</p>
+      </div>
+    </div>
+    <!-- Reviews -->
+    <div class="trust-reviews fade-up">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <div class="review-text">"DropPoint made it so easy to find a trusted station near me. I love being able to see the water test results before ordering!"</div>
+        <div class="reviewer">
+          <div class="reviewer-avatar">MR</div>
+          <div><div class="reviewer-name">Maria Reyes</div><div class="reviewer-tag">Customer · Cebu City</div></div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <div class="review-text">"As a station owner, DropPoint helped me double my orders in 2 months. The dashboard is clean and easy to use every day."</div>
+        <div class="reviewer">
+          <div class="reviewer-avatar">BG</div>
+          <div><div class="reviewer-name">Ben Gonzales</div><div class="reviewer-tag">Station Owner · Davao</div></div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <div class="review-text">"The IoT monitoring feature is incredible. My customers can see the water quality live — they trust us so much more now."</div>
+        <div class="reviewer">
+          <div class="reviewer-avatar">LT</div>
+          <div><div class="reviewer-name">Lena Torres</div><div class="reviewer-tag">Station Admin · Manila</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Wave -->
+<div class="wave" style="background:#fff"><svg viewBox="0 0 1440 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,36 C360,0 1080,72 1440,36 L1440,72 L0,72 Z" fill="#f7fbff"/></svg></div>
+
+<!-- ══════════════════════════════════════════
+     FAQ SECTION
+══════════════════════════════════════════ -->
+<section id="faq">
+  <div class="section-inner">
+    <div class="section-header text-center fade-up">
+      <div class="section-label"><i data-lucide="help-circle" style="width:12px;height:12px"></i> FAQ</div>
+      <h2 class="section-title">Frequently Asked <span>Questions</span></h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item fade-up">
+        <div class="faq-q">How do I find water refilling stations near me?<div class="faq-q-icon"><i data-lucide="plus"></i></div></div>
+        <div class="faq-a"><p>Open the DropPoint app and allow location access. The map automatically shows all verified water refilling stations near you, sorted by distance, with pricing and ratings visible at a glance.</p></div>
+      </div>
+      <div class="faq-item fade-up fade-up-delay-1">
+        <div class="faq-q">Is DropPoint free for customers?<div class="faq-q-icon"><i data-lucide="plus"></i></div></div>
+        <div class="faq-a"><p>Yes! DropPoint is completely free to use as a customer. You only pay for the water you order, at the price set by your chosen station. No app subscription or hidden fees.</p></div>
+      </div>
+      <div class="faq-item fade-up fade-up-delay-2">
+        <div class="faq-q">How does the ₱1 per gallon charge work for station owners?<div class="faq-q-icon"><i data-lucide="plus"></i></div></div>
+        <div class="faq-a"><p>DropPoint charges station owners ₱1 only when a gallon is successfully delivered to a customer. If an order is cancelled or fails, no fee is charged. It's a performance-based model that rewards completed deliveries.</p></div>
+      </div>
+      <div class="faq-item fade-up fade-up-delay-3">
+        <div class="faq-q">What is the IoT monitoring feature?<div class="faq-q-icon"><i data-lucide="plus"></i></div></div>
+        <div class="faq-a"><p>Smart Station and Premium plan subscribers receive an IoT device that connects to their water system. It continuously measures pH, TDS, turbidity, temperature, UV intensity, and flow rate — displaying live readings on their public DropPoint listing so customers can trust the water quality.</p></div>
+      </div>
+      <div class="faq-item fade-up fade-up-delay-4">
+        <div class="faq-q">How do I register my water station on DropPoint?<div class="faq-q-icon"><i data-lucide="plus"></i></div></div>
+        <div class="faq-a"><p>Simply sign up as a station owner, submit your business permit and sanitation certificate for verification, and set up your listing. Once approved, your station goes live on the map and customers can immediately start ordering from you.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     CTA SECTION
+══════════════════════════════════════════ -->
+<section id="cta">
+  <div class="hero-blob hero-blob-1" style="opacity:.15"></div>
+  <div class="hero-blob hero-blob-2" style="opacity:.15"></div>
+  <div class="cta-inner">
+    <div class="hero-badge" style="margin:0 auto 24px;width:fit-content">
+      <span class="hero-badge-dot"></span>
+      Join Thousands of Happy Users
+    </div>
+    <h2 class="cta-title">Ready to Modernize<br><span>Water Delivery?</span></h2>
+    <p class="cta-sub">Join DropPoint and give customers a smarter, faster, and more trusted water service experience. Start free today.</p>
+    <div class="cta-actions">
+      <a href="#" class="btn btn-white btn-lg">
+        <i data-lucide="zap" style="width:18px;height:18px"></i>
+        Get Started Free
+      </a>
+      <a href="mailto:hello@droppoint.ph" class="btn btn-ghost btn-lg">
+        <i data-lucide="mail" style="width:18px;height:18px"></i>
+        Contact Us
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-name">
+        <div class="nav-logo-icon" style="width:30px;height:30px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px"><path d="M12 2C6.5 9 4 13.5 4 16a8 8 0 0 0 16 0c0-2.5-2.5-7-8-14Z"/></svg></div>
+        DropPoint
+      </div>
+      <p class="footer-brand-desc">Your all-in-one platform for clean water delivery and smarter water station management across the Philippines.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Platform</div>
+      <ul class="footer-links">
+        <li><a href="#features">Customer Features</a></li>
+        <li><a href="#business">For Station Owners</a></li>
+        <li><a href="#iot">IoT Monitoring</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Company</div>
+      <ul class="footer-links">
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Contact</div>
+      <ul class="footer-links">
+        <li><a href="mailto:hello@droppoint.ph">hello@droppoint.ph</a></li>
+        <li><a href="#">+63 900 000 0000</a></li>
+        <li><a href="#">Philippines</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 DropPoint. All rights reserved.</div>
+    <div class="social-links">
+      <a href="#" class="social-link"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+      <a href="#" class="social-link"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+      <a href="#" class="social-link"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg></a>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════════
+     TWEAKS PANEL
+══════════════════════════════════════════ -->
+<div class="tweaks-panel" id="tweaksPanel">
+  <div class="tweaks-header">
+    <div class="tweaks-title">⚙️ Tweaks</div>
+    <button class="tweaks-close" id="tweaksClose"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+  </div>
+  <div class="tweak-group">
+    <label class="tweak-label">Accent Theme</label>
+    <div class="tweak-options" id="themeOptions">
+      <button class="tweak-opt active" data-theme="ocean">Ocean</button>
+      <button class="tweak-opt" data-theme="midnight">Midnight</button>
+      <button class="tweak-opt" data-theme="teal">Teal</button>
+    </div>
+  </div>
+  <div class="tweak-group">
+    <label class="tweak-label">Hero Style</label>
+    <div class="tweak-options" id="heroOptions">
+      <button class="tweak-opt active" data-hero="dark">Dark</button>
+      <button class="tweak-opt" data-hero="deep">Deep</button>
+    </div>
+  </div>
+  <div class="tweak-group">
+    <label class="tweak-label">Card Radius</label>
+    <div class="tweak-options" id="radiusOptions">
+      <button class="tweak-opt active" data-radius="16">Rounded</button>
+      <button class="tweak-opt" data-radius="8">Sharp</button>
+      <button class="tweak-opt" data-radius="24">Pill</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── Lucide icons ──
+lucide.createIcons();
+
+// ── Navbar scroll ──
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// ── Hero cards entrance ──
+setTimeout(() => {
+  document.querySelectorAll('.hcard').forEach(c => c.classList.add('entered'));
+}, 300);
+
+// ── Hero card mouse parallax ──
+const heroVisual = document.querySelector('.hero-visual');
+if (heroVisual) {
+  document.addEventListener('mousemove', (e) => {
+    const cx = window.innerWidth / 2, cy = window.innerHeight / 2;
+    const dx = (e.clientX - cx) / cx, dy = (e.clientY - cy) / cy;
+    document.querySelector('.hcard-map')   && (document.querySelector('.hcard-map').style.transform   = `translate(${dx*-10}px,${dy*-8}px)`);
+    document.querySelector('.hcard-track') && (document.querySelector('.hcard-track').style.transform = `translate(${dx*8}px,${dy*10}px)`);
+    document.querySelector('.hcard-quality')&&(document.querySelector('.hcard-quality').style.transform=`translate(${dx*-6}px,${dy*6}px)`);
+  });
+}
+
+// ── Scroll reveal (fade-up, fade-left, fade-right, scale-in) ──
+const revealEls = document.querySelectorAll('.fade-up,.fade-left,.fade-right,.scale-in');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+}, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
+revealEls.forEach(el => io.observe(el));
+
+// ── Dashboard & IoT enter trigger ──
+const enterIO = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('entered'); enterIO.unobserve(e.target); } });
+}, { threshold: 0.25 });
+document.querySelectorAll('.biz-dashboard,.iot-device').forEach(el => enterIO.observe(el));
+
+// ── Stat counter animation ──
+function animateCounter(el, target, suffix, duration) {
+  const start = performance.now();
+  const isFloat = target % 1 !== 0;
+  const step = (now) => {
+    const p = Math.min((now - start) / duration, 1);
+    const ease = 1 - Math.pow(1 - p, 3);
+    const val = isFloat ? (target * ease).toFixed(1) : Math.floor(target * ease);
+    el.textContent = val + suffix;
+    if (p < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+const statsIO = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const stats = [
+      { el: document.querySelectorAll('.hero-stat-value')[0], val: 500, suffix: '+' },
+      { el: document.querySelectorAll('.hero-stat-value')[1], val: 12,  suffix: 'k+' },
+      { el: document.querySelectorAll('.hero-stat-value')[2], val: 4.9, suffix: '★' },
+    ];
+    stats.forEach((s, i) => setTimeout(() => animateCounter(s.el, s.val, s.suffix, 1200), i * 120));
+    statsIO.unobserve(e.target);
+  });
+}, { threshold: 0.5 });
+const statsEl = document.querySelector('.hero-stats');
+if (statsEl) statsIO.observe(statsEl);
+
+// ── Gauge animation on enter ──
+const gaugeIO = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.querySelectorAll('.gauge-fill').forEach(g => {
+      const target = parseFloat(g.getAttribute('stroke-dashoffset') || '88');
+      g.style.strokeDashoffset = '169.6';
+      requestAnimationFrame(() => { setTimeout(() => { g.style.strokeDashoffset = target; }, 100); });
+    });
+    gaugeIO.unobserve(e.target);
+  });
+}, { threshold: 0.3 });
+document.querySelectorAll('.iot-device').forEach(el => gaugeIO.observe(el));
+
+// ── Chart bars ──
+const barData = [38, 52, 45, 68, 74, 61, 80, 92, 85, 78, 88, 96];
+const chartBars = document.getElementById('chartBars');
+if (chartBars) {
+  barData.forEach((v, i) => {
+    const bar = document.createElement('div');
+    bar.className = 'chart-bar' + (i === barData.length - 1 ? ' active' : '');
+    bar.style.height = v + '%';
+    chartBars.appendChild(bar);
+  });
+}
+
+// ── IoT timeline chart ──
+const iotChartEl = document.getElementById('iotChart');
+const phData = [72, 71, 73, 72, 74, 73, 72, 71, 72, 73, 72, 72, 73, 74, 72, 71, 72, 73, 71, 72, 73, 72, 74, 72];
+const iotColors = ['#06b6d4', '#2563eb', '#0d9488', '#06b6d4', '#3b82f6'];
+if (iotChartEl) {
+  phData.forEach((v, i) => {
+    const bar = document.createElement('div');
+    bar.className = 'tc-bar';
+    const h = ((v - 68) / 10) * 100;
+    bar.style.height = Math.max(20, h) + '%';
+    bar.style.background = iotColors[i % iotColors.length];
+    bar.style.flex = '1';
+    iotChartEl.appendChild(bar);
+  });
+}
+
+// ── FAQ accordion ──
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+
+// ── Tweaks panel ──
+const TWEAKS = /*EDITMODE-BEGIN*/{
+  "theme": "ocean",
+  "hero": "dark",
+  "radius": "16"
+}/*EDITMODE-END*/;
+
+const themes = {
+  ocean: { '--blue': '#1045b8', '--mid': '#2563eb', '--bright': '#3b82f6', '--aqua': '#06b6d4', '--grad': 'linear-gradient(135deg,#1045b8 0%,#0891b2 100%)', '--grad-hero': 'linear-gradient(135deg,#020c1b 0%,#071e3d 35%,#0c3566 65%,#0369a1 100%)' },
+  midnight: { '--blue': '#4f46e5', '--mid': '#6366f1', '--bright': '#818cf8', '--aqua': '#06b6d4', '--grad': 'linear-gradient(135deg,#4f46e5 0%,#0891b2 100%)', '--grad-hero': 'linear-gradient(135deg,#050311 0%,#130d3d 35%,#1e1560 65%,#0369a1 100%)' },
+  teal: { '--blue': '#0d766e', '--mid': '#0d9488', '--bright': '#14b8a6', '--aqua': '#06b6d4', '--grad': 'linear-gradient(135deg,#0d766e 0%,#0891b2 100%)', '--grad-hero': 'linear-gradient(135deg,#011614 0%,#032e2a 35%,#064e48 65%,#0369a1 100%)' }
+};
+const heroes = {
+  dark: 'linear-gradient(135deg,#020c1b 0%,#071e3d 35%,#0c3566 65%,#0369a1 100%)',
+  deep: 'linear-gradient(135deg,#000510 0%,#030f2e 40%,#060d47 70%,#0a1a6b 100%)'
+};
+
+function applyTweaks(t) {
+  const root = document.documentElement;
+  if (t.theme && themes[t.theme]) Object.entries(themes[t.theme]).forEach(([k, v]) => root.style.setProperty(k, v));
+  if (t.hero && heroes[t.hero]) root.style.setProperty('--grad-hero', heroes[t.hero]);
+  if (t.radius) root.style.setProperty('--r', t.radius + 'px');
+}
+applyTweaks(TWEAKS);
+
+const panel = document.getElementById('tweaksPanel');
+document.getElementById('tweaksClose').addEventListener('click', () => {
+  panel.classList.remove('visible');
+  window.parent.postMessage({ type: '__edit_mode_dismissed' }, '*');
+});
+document.querySelectorAll('[data-theme]').forEach(btn => {
+  btn.classList.toggle('active', btn.dataset.theme === TWEAKS.theme);
+  btn.addEventListener('click', () => {
+    TWEAKS.theme = btn.dataset.theme;
+    document.querySelectorAll('[data-theme]').forEach(b => b.classList.toggle('active', b === btn));
+    applyTweaks(TWEAKS);
+    window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { theme: TWEAKS.theme } }, '*');
+  });
+});
+document.querySelectorAll('[data-hero]').forEach(btn => {
+  btn.classList.toggle('active', btn.dataset.hero === TWEAKS.hero);
+  btn.addEventListener('click', () => {
+    TWEAKS.hero = btn.dataset.hero;
+    document.querySelectorAll('[data-hero]').forEach(b => b.classList.toggle('active', b === btn));
+    applyTweaks(TWEAKS);
+    window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { hero: TWEAKS.hero } }, '*');
+  });
+});
+document.querySelectorAll('[data-radius]').forEach(btn => {
+  btn.classList.toggle('active', btn.dataset.radius === TWEAKS.radius);
+  btn.addEventListener('click', () => {
+    TWEAKS.radius = btn.dataset.radius;
+    document.querySelectorAll('[data-radius]').forEach(b => b.classList.toggle('active', b === btn));
+    applyTweaks(TWEAKS);
+    window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { radius: TWEAKS.radius } }, '*');
+  });
+});
+
+window.addEventListener('message', e => {
+  if (e.data && e.data.type === '__activate_edit_mode') panel.classList.add('visible');
+  if (e.data && e.data.type === '__deactivate_edit_mode') panel.classList.remove('visible');
+});
+window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+</script>
+</body>
+</html>
