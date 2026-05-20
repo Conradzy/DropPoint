@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In — DropPoint</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+  <div class="page-bg" aria-hidden="true">
+    <div class="page-bg__panel"></div>
+    <div class="page-bg__panel page-bg__panel--2"></div>
+    <div class="page-bg__panel page-bg__panel--right"></div>
+  </div>
+
+  <header class="site-header">
+    <a class="brand" href="../DropPoint.html">
+      <img class="brand__logo" src="assets/landing/logo.png" alt="DropPoint" width="44" height="44">
+      <span>DropPoint</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle__bar"></span>
+      <span class="nav-toggle__bar"></span>
+      <span class="nav-toggle__bar"></span>
+    </button>
+    <nav class="nav" id="site-nav" aria-label="Main">
+      <a class="nav__link" href="../DropPoint.html">Home</a>
+      <a class="nav__link" href="../DropPoint.html#team">About Us</a>
+      <a class="nav__link is-active" href="login.html">Sign In</a>
+    </nav>
+  </header>
+  <div class="nav-overlay" aria-hidden="true"></div>
+
+  <main class="login-page">
+    <div class="login-card">
+      <div class="login-card__visual" aria-hidden="true">
+        <img src="assets/landing/login-station.png" alt="Water refilling station storefront" width="960" height="480">
+      </div>
+      <div class="login-card__body">
+        <div class="login-card__brand">
+          <img src="assets/landing/logo.png" alt="" width="40" height="40">
+          <span>DropPoint</span>
+        </div>
+        <h1 class="login-card__welcome">Welcome admin!</h1>
+
+        <form id="loginForm" action="dashboard.html" method="get" novalidate>
+          <div class="field">
+            <label class="visually-hidden" for="email">Email</label>
+            <input class="field__input" type="email" id="email" name="email" placeholder="Email" autocomplete="username" required>
+            <svg class="field__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </div>
+          <div class="field">
+            <label class="visually-hidden" for="password">Password</label>
+            <input class="field__input" type="password" id="password" name="password" placeholder="Password" autocomplete="current-password" required>
+            <button type="button" class="field__toggle" data-password-toggle aria-label="Show password">
+              <svg class="icon-eye-open is-hidden" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+              <svg class="icon-eye-closed" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
+                <line x1="1" y1="1" x2="23" y2="23"/>
+              </svg>
+            </button>
+          </div>
+          <div class="forgot-row">
+            <a href="#">Forgot password?</a>
+          </div>
+          <button type="submit" class="btn-login">Log in</button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <div class="page-splash" aria-hidden="true">
+    <img src="assets/landing/hero-glass.png" alt="">
+  </div>
+
+  <script src="js/login.js"></script>
+</body>
+</html>

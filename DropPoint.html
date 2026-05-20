@@ -1,0 +1,1663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DropPoint — Smarter Water Delivery</title>
+<link rel="stylesheet" href="droppoint.css">
+<script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+<meta name="referrer" content="strict-origin-when-cross-origin">
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     NAVBAR
+══════════════════════════════════════════ -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">
+    <img src="images/droppoint logo.png" alt="DropPoint Logo" style="width:40px;height:40px;object-fit:contain;filter:drop-shadow(0 2px 8px rgba(59,130,246,.4))">
+    <span class="nav-logo-name">DropPoint</span>
+  </a>
+  <button type="button" class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navMenu">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-menu" id="navMenu">
+    <ul class="nav-links">
+      <li><a href="#problem">About</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#business">For Stations</a></li>
+      <li><a href="#iot">IoT</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#pricing" class="btn btn-outline">View Plans</a>
+      <a href="#cta" class="btn btn-primary">Get Started</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Custom water-droplet cursor (top of page = above all sections) -->
+<div class="droplet-cursor" id="dropletCursor" aria-hidden="true">
+  <svg viewBox="0 0 32 40" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="dropletGrad" cx="40%" cy="35%" r="60%">
+        <stop offset="0%" stop-color="#ffffff" stop-opacity=".95"/>
+        <stop offset="35%" stop-color="#a5e9ff" stop-opacity=".85"/>
+        <stop offset="100%" stop-color="#0369a1" stop-opacity=".9"/>
+      </radialGradient>
+    </defs>
+    <path d="M16 2C8.5 14 4 20.5 4 26a12 12 0 0 0 24 0c0-5.5-4.5-12-12-24Z" fill="url(#dropletGrad)" stroke="#22d3ee" stroke-width="1.2"/>
+    <ellipse cx="12" cy="18" rx="3" ry="4.5" fill="#ffffff" opacity=".7"/>
+  </svg>
+</div>
+<div class="droplet-trail" id="dropletTrail" aria-hidden="true"></div>
+
+<!-- ══════════════════════════════════════════
+     HERO
+══════════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
+  <div class="hero-blob hero-blob-3"></div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        Now Available · Philippines
+      </div>
+      <h1 class="hero-title">
+        Pure & Near,<br>Water Made<br>Clear. <span>DropPoint</span>
+      </h1>
+      <p class="hero-sub">
+        Find nearby water refilling stations, compare prices, verify quality, schedule deliveries, and help businesses manage operations — all in one platform.
+      </p>
+      <div class="hero-actions">
+        <a href="#cta" class="btn btn-primary btn-lg">
+          <i data-lucide="zap" style="width:18px;height:18px"></i>
+          Get Started
+        </a>
+        <button class="hero-video-btn" onclick="document.getElementById('video').scrollIntoView({behavior:'smooth'})">
+          <div class="hero-video-btn-circle">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </div>
+          <span>Watch the Video</span>
+        </button>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-value">500+</div>
+          <div class="hero-stat-label">Stations Listed</div>
+        </div>
+        <div>
+          <div class="hero-stat-value">12k+</div>
+          <div class="hero-stat-label">Orders Delivered</div>
+        </div>
+        <div>
+          <div class="hero-stat-value">4.9★</div>
+          <div class="hero-stat-label">App Rating</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating UI Cards -->
+    <div class="hero-visual">
+
+      <!-- Map Card -->
+      <div class="hcard hcard-map fade-up">
+        <div class="hcard-title">
+          <i data-lucide="map-pin" style="width:12px;height:12px;color:#22d3ee"></i>
+          Nearby Stations
+        </div>
+        <div class="map-area">
+          <div class="map-grid"></div>
+          <div class="map-road-h"></div>
+          <div class="map-road-v"></div>
+          <div class="map-pin blue"><div class="map-pin-dot"></div></div>
+          <div class="map-pin cyan"><div class="map-pin-dot"></div></div>
+          <div class="map-pin you"><div class="map-pin-dot"></div></div>
+        </div>
+        <div class="station-list">
+          <div class="station-item">
+            <div class="station-dot" style="background:#3b82f6"></div>
+            <div class="station-info">
+              <div class="station-name">AquaFresh Station</div>
+              <div class="station-dist">0.4 km · Open now</div>
+            </div>
+            <div class="station-price">₱25/gal</div>
+          </div>
+          <div class="station-item">
+            <div class="station-dot" style="background:#06b6d4"></div>
+            <div class="station-info">
+              <div class="station-name">PureFlow Refilling</div>
+              <div class="station-dist">0.8 km · Open now</div>
+            </div>
+            <div class="station-price">₱22/gal</div>
+          </div>
+          <div class="station-item">
+            <div class="station-dot" style="background:#10b981"></div>
+            <div class="station-info">
+              <div class="station-name">ClearWater Depot</div>
+              <div class="station-dist">1.2 km · Open now</div>
+            </div>
+            <div class="station-price">₱28/gal</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Delivery Tracking Card -->
+      <div class="hcard hcard-track fade-up fade-up-delay-2">
+        <div class="hcard-title">
+          <i data-lucide="truck" style="width:12px;height:12px;color:#22d3ee"></i>
+          Delivery Tracking
+        </div>
+        <div class="track-status">
+          <div class="track-dot"></div>
+          <div class="track-text">On the way · ETA 8 min</div>
+        </div>
+        <div class="track-steps">
+          <div class="track-step done">
+            <div class="track-step-icon"><i data-lucide="check-circle" style="width:14px;height:14px"></i></div>
+            <div class="track-step-label">Order Confirmed</div>
+          </div>
+          <div class="track-step done">
+            <div class="track-step-icon"><i data-lucide="package" style="width:14px;height:14px"></i></div>
+            <div class="track-step-label">Gallons Prepared</div>
+          </div>
+          <div class="track-step active">
+            <div class="track-step-icon"><i data-lucide="truck" style="width:14px;height:14px"></i></div>
+            <div class="track-step-label">Out for Delivery</div>
+          </div>
+          <div class="track-step pending">
+            <div class="track-step-icon"><i data-lucide="home" style="width:14px;height:14px"></i></div>
+            <div class="track-step-label">Delivered</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Water Quality Card -->
+      <div class="hcard hcard-quality fade-up fade-up-delay-1">
+        <div class="hcard-title">
+          <i data-lucide="activity" style="width:12px;height:12px;color:#22d3ee"></i>
+          Water Quality
+        </div>
+        <div class="quality-score">
+          <div class="quality-badge">✓ Excellent</div>
+        </div>
+        <div class="quality-metrics">
+          <div class="qm">
+            <div class="qm-label">pH</div>
+            <div class="qm-bar"><div class="qm-fill" style="width:72%;background:linear-gradient(90deg,#06b6d4,#2563eb)"></div></div>
+            <div class="qm-val">7.2</div>
+          </div>
+          <div class="qm">
+            <div class="qm-label">TDS</div>
+            <div class="qm-bar"><div class="qm-fill" style="width:48%;background:linear-gradient(90deg,#06b6d4,#2563eb)"></div></div>
+            <div class="qm-val">248</div>
+          </div>
+          <div class="qm">
+            <div class="qm-label">NTU</div>
+            <div class="qm-bar"><div class="qm-fill" style="width:15%;background:linear-gradient(90deg,#10b981,#06b6d4)"></div></div>
+            <div class="qm-val">0.8</div>
+          </div>
+          <div class="qm">
+            <div class="qm-label">°C</div>
+            <div class="qm-bar"><div class="qm-fill" style="width:55%;background:linear-gradient(90deg,#06b6d4,#2563eb)"></div></div>
+            <div class="qm-val">25°</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Wave -->
+<div class="wave" style="background:var(--grad-hero)"><svg viewBox="0 0 1440 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,36 C240,72 480,0 720,36 C960,72 1200,0 1440,36 L1440,74 L0,74 Z" fill="#ffffff"/></svg></div>
+
+<!-- ══════════════════════════════════════════
+     PROBLEM SECTION
+══════════════════════════════════════════ -->
+<section id="problem">
+  <div class="section-inner">
+    <div class="section-header text-center fade-up">
+      <div class="section-label"><i data-lucide="alert-triangle" style="width:12px;height:12px"></i> The Problem</div>
+      <h2 class="section-title">Why is getting water still<br><span>so inconvenient?</span></h2>
+      <p class="section-sub">Millions still struggle to access clean water conveniently. Station owners lack tools to manage and grow efficiently.</p>
+    </div>
+    <div class="problem-grid">
+      <div class="problem-card fade-up">
+        <div class="problem-icon"><i data-lucide="thermometer-sun"></i></div>
+        <h3>Travelling Under Extreme Heat</h3>
+        <p>Customers still carry gallons under the scorching sun with no easy option to order delivery from nearby stations.</p>
+      </div>
+      <div class="problem-card fade-up fade-up-delay-1">
+        <div class="problem-icon"><i data-lucide="clock"></i></div>
+        <h3>Delayed & Unreliable Deliveries</h3>
+        <p>Poor order management at stations leads to missed schedules, long waits, and frustrated customers.</p>
+      </div>
+      <div class="problem-card fade-up fade-up-delay-2">
+        <div class="problem-icon"><i data-lucide="shield-off"></i></div>
+        <h3>Lack of Trust & Transparency</h3>
+        <p>No easy way to verify if a station has valid permits, quality certifications, or safe water lab results.</p>
+      </div>
+      <div class="problem-card fade-up fade-up-delay-3">
+        <div class="problem-icon"><i data-lucide="bar-chart-2"></i></div>
+        <h3>No Tools for Business Growth</h3>
+        <p>Station owners manage orders manually, missing out on sales data, customer insights, and digital reach.</p>
+      </div>
+      <div class="problem-card fade-up fade-up-delay-4">
+        <div class="problem-icon"><i data-lucide="map-off"></i></div>
+        <h3>Hard to Discover Stations</h3>
+        <p>Customers rely on word-of-mouth to find stations. Owners have no digital presence or way to attract more buyers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Wave -->
+<div class="wave" style="background:#fff"><svg viewBox="0 0 1440 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,36 C360,0 1080,72 1440,36 L1440,74 L0,74 Z" fill="#f0f7ff"/></svg></div>
+
+<!-- ══════════════════════════════════════════
+     MISSION VISION GOALS SECTION
+══════════════════════════════════════════ -->
+<section id="purpose">
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
+  <div class="section-inner">
+    <div class="section-header text-center fade-up">
+      <div class="section-label"><i data-lucide="target" style="width:12px;height:12px"></i> Our Purpose</div>
+      <h2 class="section-title">Driven by a clear<br><span>Mission, Vision, and Goals</span></h2>
+      <p class="section-sub">DropPoint is built to solve real community needs while helping water stations grow with confidence and smarter tools.</p>
+    </div>
+    <div class="purpose-grid">
+      <div class="purpose-card fade-up">
+        <div class="purpose-icon"><i data-lucide="flag"></i></div>
+        <h3>Mission</h3>
+        <p>To bring convenience, trust, and efficiency to water delivery through one smart platform.</p>
+      </div>
+      <div class="purpose-card fade-up fade-up-delay-1">
+        <div class="purpose-icon"><i data-lucide="eye"></i></div>
+        <h3>Vision</h3>
+        <p>To transform the future of water access with technology that empowers both customers and water refilling businesses.</p>
+      </div>
+      <div class="purpose-card fade-up fade-up-delay-2">
+        <div class="purpose-icon"><i data-lucide="rocket"></i></div>
+        <h3>Goals</h3>
+        <p>To simplify water ordering, improve delivery experience, strengthen business operations, and make trusted water services more accessible to every community.</p>
+      </div>
+    </div>
+  </div>
+
+
+<!-- ══════════════════════════════════════════
+     MEET THE TEAM SECTION
+══════════════════════════════════════════ -->
+<section id="team" class="team-section">
+  <!-- Water ripple decorations -->
+  <div class="team-ripple team-ripple-1"></div>
+  <div class="team-ripple team-ripple-2"></div>
+  <div class="team-ripple team-ripple-3"></div>
+  <svg class="team-droplets" viewBox="0 0 1440 600" preserveAspectRatio="none" aria-hidden="true">
+    <defs>
+      <linearGradient id="dropGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#22d3ee" stop-opacity=".4"/>
+        <stop offset="100%" stop-color="#2563eb" stop-opacity=".15"/>
+      </linearGradient>
+    </defs>
+    <path class="td td-1" d="M80 40C70 70 60 95 60 115a20 20 0 0 0 40 0c0-20-10-45-20-75Z" fill="url(#dropGrad)"/>
+    <path class="td td-2" d="M1380 460C1370 490 1360 515 1360 535a20 20 0 0 0 40 0c0-20-10-45-20-75Z" fill="url(#dropGrad)"/>
+    <path class="td td-3" d="M1200 80C1190 110 1180 135 1180 155a20 20 0 0 0 40 0c0-20-10-45-20-75Z" fill="url(#dropGrad)"/>
+    <path class="td td-4" d="M180 480C170 510 160 535 160 555a20 20 0 0 0 40 0c0-20-10-45-20-75Z" fill="url(#dropGrad)"/>
+  </svg>
+
+  <div class="section-inner" style="position:relative;z-index:2">
+    <div class="section-header text-center fade-up">
+      <div class="section-label"><i data-lucide="users" style="width:12px;height:12px"></i> Meet the Team</div>
+      <h2 class="section-title">The People Behind <span>DropPoint</span></h2>
+      <p class="section-sub">A small team with a big mission — making clean water accessible to every Filipino home.</p>
+    </div>
+
+    <div class="team-grid">
+      <!-- Conrad - CEO -->
+      <div class="team-card fade-up" data-aos-delay="0">
+        <div class="team-card-inner">
+          <div class="team-photo-wrap">
+            <div class="team-photo-ripple"></div>
+            <img src="images/rimonprofile.png" alt="Conrad S. Napinas" class="team-photo">
+            <div class="team-photo-overlay">
+              <div class="team-overlay-content">
+                <div class="team-overlay-icon"><i data-lucide="crown" style="width:24px;height:24px"></i></div>
+                <p class="team-overlay-quote">"Leading the venture and shaping every decision."</p>
+                <div class="team-socials">
+                  <a href="#" class="team-social"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                  <a href="#" class="team-social"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 16h-2v-6h2v6zm-1-6.891c-.607 0-1.1-.496-1.1-1.109 0-.612.492-1.109 1.1-1.109s1.1.497 1.1 1.109c0 .613-.493 1.109-1.1 1.109zm8 6.891h-1.998v-2.861c0-1.881-2.002-1.722-2.002 0v2.861h-2v-6h2v1.093c.872-1.616 4-1.736 4 1.548v3.359z"/></svg></a>
+                  <a href="#" class="team-social"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg></a>
+                </div>
+              </div>
+            </div>
+            <div class="team-corner team-corner-tl"></div>
+            <div class="team-corner team-corner-tr"></div>
+            <div class="team-corner team-corner-bl"></div>
+            <div class="team-corner team-corner-br"></div>
+          </div>
+          <div class="team-info">
+            <h3 class="team-name">Conrad S. Napinas</h3>
+            <div class="team-role">
+              <span class="team-role-dot"></span>
+              CEO
+            </div>
+            <p class="team-desc">Leads the venture and decision-making</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kobe - COO -->
+      <div class="team-card fade-up fade-up-delay-1">
+        <div class="team-card-inner">
+          <div class="team-photo-wrap">
+            <div class="team-photo-ripple"></div>
+            <img src="uploads/kobe.jpg" alt="Kobe Dumandan" class="team-photo">
+            <div class="team-photo-overlay">
+              <div class="team-overlay-content">
+                <div class="team-overlay-icon"><i data-lucide="settings" style="width:24px;height:24px"></i></div>
+                <p class="team-overlay-quote">"Keeping the gears turning, every single day."</p>
+                <div class="team-socials">
+                  <a href="#" class="team-social"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                  <a href="#" class="team-social"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 16h-2v-6h2v6zm-1-6.891c-.607 0-1.1-.496-1.1-1.109 0-.612.492-1.109 1.1-1.109s1.1.497 1.1 1.109c0 .613-.493 1.109-1.1 1.109zm8 6.891h-1.998v-2.861c0-1.881-2.002-1.722-2.002 0v2.861h-2v-6h2v1.093c.872-1.616 4-1.736 4 1.548v3.359z"/></svg></a>
+                  <a href="#" class="team-social"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg></a>
+                </div>
+              </div>
+            </div>
+            <div class="team-corner team-corner-tl"></div>
+            <div class="team-corner team-corner-tr"></div>
+            <div class="team-corner team-corner-bl"></div>
+            <div class="team-corner team-corner-br"></div>
+          </div>
+          <div class="team-info">
+            <h3 class="team-name">Kobe Dumandan</h3>
+            <div class="team-role">
+              <span class="team-role-dot"></span>
+              COO
+            </div>
+            <p class="team-desc">Manages operations and coordination</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Denrey - CTO -->
+      <div class="team-card fade-up fade-up-delay-2">
+        <div class="team-card-inner">
+          <div class="team-photo-wrap">
+            <div class="team-photo-ripple"></div>
+            <img src="uploads/denrey.jpg" alt="Denrey T. Resane" class="team-photo">
+            <div class="team-photo-overlay">
+              <div class="team-overlay-content">
+                <div class="team-overlay-icon"><i data-lucide="code" style="width:24px;height:24px"></i></div>
+                <p class="team-overlay-quote">"Building the platform, line by line, drop by drop."</p>
+                <div class="team-socials">
+                  <a href="#" class="team-social"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                  <a href="#" class="team-social"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+                  <a href="#" class="team-social"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg></a>
+                </div>
+              </div>
+            </div>
+            <div class="team-corner team-corner-tl"></div>
+            <div class="team-corner team-corner-tr"></div>
+            <div class="team-corner team-corner-bl"></div>
+            <div class="team-corner team-corner-br"></div>
+          </div>
+          <div class="team-info">
+            <h3 class="team-name">Denrey T. Resane</h3>
+            <div class="team-role">
+              <span class="team-role-dot"></span>
+              CTO
+            </div>
+            <p class="team-desc">Develops and maintains the platform</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Jems - CMO -->
+      <div class="team-card fade-up fade-up-delay-3">
+        <div class="team-card-inner">
+          <div class="team-photo-wrap">
+            <div class="team-photo-ripple"></div>
+            <img src="images/jems.jpg" alt="Jems A. Salas" class="team-photo">
+            <div class="team-photo-overlay">
+              <div class="team-overlay-content">
+                <div class="team-overlay-icon"><i data-lucide="megaphone" style="width:24px;height:24px"></i></div>
+                <p class="team-overlay-quote">"Telling DropPoint's story to every household."</p>
+                <div class="team-socials">
+                  <a href="#" class="team-social"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                  <a href="#" class="team-social"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 16h-2v-6h2v6zm-1-6.891c-.607 0-1.1-.496-1.1-1.109 0-.612.492-1.109 1.1-1.109s1.1.497 1.1 1.109c0 .613-.493 1.109-1.1 1.109zm8 6.891h-1.998v-2.861c0-1.881-2.002-1.722-2.002 0v2.861h-2v-6h2v1.093c.872-1.616 4-1.736 4 1.548v3.359z"/></svg></a>
+                  <a href="#" class="team-social"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg></a>
+                </div>
+              </div>
+            </div>
+            <div class="team-corner team-corner-tl"></div>
+            <div class="team-corner team-corner-tr"></div>
+            <div class="team-corner team-corner-bl"></div>
+            <div class="team-corner team-corner-br"></div>
+          </div>
+          <div class="team-info">
+            <h3 class="team-name">Jems A. Salas</h3>
+            <div class="team-role">
+              <span class="team-role-dot"></span>
+              CMO
+            </div>
+            <p class="team-desc">Handles marketing and customer engagement</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer caption -->
+    <div class="team-caption fade-up">
+      <span class="team-caption-droplet">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 9 4 13.5 4 16a8 8 0 0 0 16 0c0-2.5-2.5-7-8-14Z"/></svg>
+      </span>
+      Built by passionate students who believe access to clean water shouldn't be a luxury.
+    </div>
+  </div>
+</section>
+
+<!-- Wave -->
+<div class="wave" style="background:linear-gradient(180deg,#eef6ff 0%,#dde8f8 100%)"><svg viewBox="0 0 1440 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,36 C240,72 480,0 720,36 C960,72 1200,0 1440,36 L1440,74 L0,74 Z" fill="#f0f7ff"/></svg></div>
+
+<!-- ══════════════════════════════════════════
+     FEATURES SECTION
+══════════════════════════════════════════ -->
+<section id="features">
+  <div class="section-inner">
+    <div class="section-header text-center fade-up">
+      <div class="section-label"><i data-lucide="sparkles" style="width:12px;height:12px"></i> Customer Features</div>
+      <h2 class="section-title">Everything You Need,<br>in <span>One Smart Platform</span></h2>
+      <p class="section-sub">DropPoint puts every water-related need right at your fingertips — from discovery to doorstep delivery.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feat-card fade-up">
+        <div class="feat-icon fi-blue"><i data-lucide="map-pin"></i></div>
+        <div><h3>Find Nearby Stations</h3><p>Discover verified water refilling stations closest to you on an interactive live map.</p></div>
+      </div>
+      <div class="feat-card fade-up fade-up-delay-1">
+        <div class="feat-icon fi-cyan"><i data-lucide="scale"></i></div>
+        <div><h3>Compare Prices</h3><p>Easily compare gallon prices, delivery fees, and services from multiple stations side by side.</p></div>
+      </div>
+      <div class="feat-card fade-up fade-up-delay-2">
+        <div class="feat-icon fi-teal"><i data-lucide="shield-check"></i></div>
+        <div><h3>Verify Permits & Certificates</h3><p>View official sanitation permits, business licenses, and DOH certificates directly in-app.</p></div>
+      </div>
+      <div class="feat-card fade-up fade-up-delay-3">
+        <div class="feat-icon fi-indigo"><i data-lucide="flask-conical"></i></div>
+        <div><h3>View Water Lab Results</h3><p>Access transparent water quality test reports so you know exactly what you're drinking.</p></div>
+      </div>
+      <div class="feat-card fade-up">
+        <div class="feat-icon fi-blue"><i data-lucide="shopping-cart"></i></div>
+        <div><h3>Order Gallon Refills</h3><p>Order standard gallon refills with one tap and get them delivered to your door.</p></div>
+      </div>
+      <div class="feat-card fade-up fade-up-delay-1">
+        <div class="feat-icon fi-cyan"><i data-lucide="package"></i></div>
+        <div><h3>Bulk Bottled Water</h3><p>Order bulk bottled water for offices, events, or businesses at competitive station rates.</p></div>
+      </div>
+      <div class="feat-card fade-up fade-up-delay-2">
+        <div class="feat-icon fi-teal"><i data-lucide="calendar-clock"></i></div>
+        <div><h3>Schedule Deliveries</h3><p>Set preferred delivery times and get your water when it's most convenient for you.</p></div>
+      </div>
+      <div class="feat-card fade-up fade-up-delay-3">
+        <div class="feat-icon fi-indigo"><i data-lucide="navigation"></i></div>
+        <div><h3>Real-Time Tracking</h3><p>Follow your delivery from station to doorstep with live GPS tracking and ETA updates.</p></div>
+      </div>
+      <div class="feat-card fade-up">
+        <div class="feat-icon fi-blue"><i data-lucide="message-circle"></i></div>
+        <div><h3>In-App Messaging</h3><p>Chat directly with station admins for special requests, delivery updates, or questions.</p></div>
+      </div>
+      <div class="feat-card fade-up fade-up-delay-1">
+        <div class="feat-icon fi-cyan"><i data-lucide="star"></i></div>
+        <div><h3>Reviews & Ratings</h3><p>Leave honest reviews and read real feedback from verified customers before you order.</p></div>
+      </div>
+      <div class="feat-card fade-up fade-up-delay-2">
+        <div class="feat-icon fi-teal"><i data-lucide="sparkles"></i></div>
+        <div><h3>Smart Recommendations</h3><p>Get personalized station suggestions based on your location, preferences, and order history.</p></div>
+      </div>
+      <div class="feat-card fade-up fade-up-delay-3">
+        <div class="feat-icon fi-indigo"><i data-lucide="info"></i></div>
+        <div><h3>Full Station Details</h3><p>See operating hours, available products, delivery range, and more before placing an order.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Wave -->
+<div class="wave" style="background:#f0f7ff"><svg viewBox="0 0 1440 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,36 C240,72 480,0 720,36 C960,72 1200,0 1440,36 L1440,74 L0,74 Z" fill="#ffffff"/></svg></div>
+
+<!-- ══════════════════════════════════════════
+     BUSINESS SECTION
+══════════════════════════════════════════ -->
+<section id="business">
+  <div class="section-inner">
+    <div class="business-grid">
+      <!-- Dashboard mockup -->
+      <div class="biz-dashboard fade-left">
+        <div class="dash-header">
+          <div class="dash-title">Station Dashboard</div>
+          <div class="dash-period">This Month</div>
+        </div>
+        <div class="dash-metrics">
+          <div class="dash-metric">
+            <div class="dm-val">1,248</div>
+            <div class="dm-label">Gallons Delivered</div>
+            <div class="dm-change up"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>+18.4%</div>
+          </div>
+          <div class="dash-metric">
+            <div class="dm-val">₱31.2k</div>
+            <div class="dm-label">Total Revenue</div>
+            <div class="dm-change up"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>+22.1%</div>
+          </div>
+          <div class="dash-metric">
+            <div class="dm-val">94.2%</div>
+            <div class="dm-label">On-Time Rate</div>
+            <div class="dm-change up"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>+3.5%</div>
+          </div>
+          <div class="dash-metric">
+            <div class="dm-val">4.8★</div>
+            <div class="dm-label">Avg. Rating</div>
+            <div class="dm-change up"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>+0.2</div>
+          </div>
+        </div>
+        <div class="dash-chart">
+          <div class="chart-bars" id="chartBars"></div>
+        </div>
+        <div class="dash-orders" style="margin-top:16px">
+          <div style="font-size:.7rem;font-weight:600;color:rgba(255,255,255,.4);margin-bottom:8px;text-transform:uppercase;letter-spacing:.06em">Recent Orders</div>
+          <div class="dash-order-item">
+            <div class="doi-avatar">JR</div>
+            <div class="doi-info"><div class="doi-name">Juan Reyes</div><div class="doi-detail">3 gallons · Barangay 12</div></div>
+            <div class="doi-status delivered">Delivered</div>
+          </div>
+          <div class="dash-order-item">
+            <div class="doi-avatar">ML</div>
+            <div class="doi-info"><div class="doi-name">Maria Lim</div><div class="doi-detail">5 gallons · Purok 3</div></div>
+            <div class="doi-status transit">In Transit</div>
+          </div>
+          <div class="dash-order-item">
+            <div class="doi-avatar">AC</div>
+            <div class="doi-info"><div class="doi-name">Ana Cruz</div><div class="doi-detail">2 gallons · Phase 1</div></div>
+            <div class="doi-status pending">Pending</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="business-content fade-right fade-up-delay-2">
+        <div class="section-label"><i data-lucide="building-2" style="width:12px;height:12px"></i> For Station Owners</div>
+        <h2>Built Not Only for Customers,<br><span style="background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">But for Growing Water Stations</span></h2>
+        <p>DropPoint isn't just an ordering app — it's a complete digital business platform for water refilling station owners who want to grow smarter.</p>
+        <div class="benefit-list">
+          <div class="benefit-item">
+            <div class="benefit-check"><i data-lucide="inbox"></i></div>
+            <div><div class="benefit-item-title">Receive & Manage Orders</div><div class="benefit-item-desc">Accept, track, and fulfill orders digitally. No more paper logs or missed calls.</div></div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-check"><i data-lucide="trending-up"></i></div>
+            <div><div class="benefit-item-title">Sales & Statistics</div><div class="benefit-item-desc">Monitor daily revenue, top products, delivery performance, and growth trends.</div></div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-check"><i data-lucide="map"></i></div>
+            <div><div class="benefit-item-title">Map Visibility & Discovery</div><div class="benefit-item-desc">Appear on the DropPoint map so nearby customers can find and order from you easily.</div></div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-check"><i data-lucide="message-square"></i></div>
+            <div><div class="benefit-item-title">Customer Communication</div><div class="benefit-item-desc">Chat with customers in-app. Handle special requests and build long-term loyalty.</div></div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-check"><i data-lucide="receipt"></i></div>
+            <div><div class="benefit-item-title">Transaction History</div><div class="benefit-item-desc">Full record of every order, payment, and delivery for easy accounting and compliance.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     IOT SECTION
+══════════════════════════════════════════ -->
+<section id="iot">
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
+  <div class="section-inner">
+
+    <!-- ── IoT Device Showcase Banner ── -->
+    <div class="iot-showcase fade-up">
+      <!-- Decorative radial backdrop -->
+      <div class="iot-showcase-glow"></div>
+      <div class="iot-showcase-grid-bg"></div>
+
+      <div class="iot-showcase-inner">
+        <!-- Left: Label + name + features -->
+        <div class="iot-showcase-text">
+          <div class="section-label" style="background:rgba(34,211,238,.1);border-color:rgba(34,211,238,.2);color:var(--cyan);margin-bottom:18px">
+            <i data-lucide="cpu" style="width:12px;height:12px"></i> Hardware
+          </div>
+          <div class="iot-showcase-tag">
+            <span class="iot-showcase-dot"></span>
+            <span>Now shipping · v2.1</span>
+          </div>
+          <h3 class="iot-showcase-title">DropPoint <span>Aqua-Sense™</span></h3>
+          <p class="iot-showcase-sub">Our compact 6-sensor monitoring module installs in-line with any water refilling system — streaming live quality data to the cloud 24/7.</p>
+          <div class="iot-showcase-specs">
+            <div class="iss-item">
+              <i data-lucide="wifi" style="width:14px;height:14px;color:#22d3ee"></i>
+              <div><div class="iss-l">Connectivity</div><div class="iss-v">Wi-Fi + 4G LTE</div></div>
+            </div>
+            <div class="iss-item">
+              <i data-lucide="battery-charging" style="width:14px;height:14px;color:#22d3ee"></i>
+              <div><div class="iss-l">Power</div><div class="iss-v">12V DC / Solar</div></div>
+            </div>
+            <div class="iss-item">
+              <i data-lucide="shield" style="width:14px;height:14px;color:#22d3ee"></i>
+              <div><div class="iss-l">Rating</div><div class="iss-v">IP65 Waterproof</div></div>
+            </div>
+            <div class="iss-item">
+              <i data-lucide="zap" style="width:14px;height:14px;color:#22d3ee"></i>
+              <div><div class="iss-l">Refresh</div><div class="iss-v">Every 30 sec</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Device image with callouts -->
+        <div class="iot-device-img-wrap">
+          <div class="iot-device-stage">
+            <!-- Animated rings behind device -->
+            <div class="iot-ring iot-ring-1"></div>
+            <div class="iot-ring iot-ring-2"></div>
+            <div class="iot-ring iot-ring-3"></div>
+
+            <img src="images/iot.png" alt="DropPoint IoT Module — physical hardware" class="iot-device-img">
+
+            <!-- Callout pins -->
+            <div class="iot-pin iot-pin-1">
+              <span class="iot-pin-dot"></span>
+              <div class="iot-pin-line"></div>
+              <div class="iot-pin-label">
+                <div class="iot-pin-label-t">Smart Antenna</div>
+                <div class="iot-pin-label-s">4G LTE + Wi-Fi</div>
+              </div>
+            </div>
+            <div class="iot-pin iot-pin-2">
+              <span class="iot-pin-dot"></span>
+              <div class="iot-pin-line"></div>
+              <div class="iot-pin-label">
+                <div class="iot-pin-label-t">Live Display</div>
+                <div class="iot-pin-label-s">OLED · 6 metrics</div>
+              </div>
+            </div>
+            <div class="iot-pin iot-pin-3">
+              <span class="iot-pin-dot"></span>
+              <div class="iot-pin-line"></div>
+              <div class="iot-pin-label">
+                <div class="iot-pin-label-t">pH + Turbidity</div>
+                <div class="iot-pin-label-s">Probe sensors</div>
+              </div>
+            </div>
+            <div class="iot-pin iot-pin-4">
+              <span class="iot-pin-dot"></span>
+              <div class="iot-pin-line"></div>
+              <div class="iot-pin-label">
+                <div class="iot-pin-label-t">Flow Meter</div>
+                <div class="iot-pin-label-s">2.4 L/min</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="iot-grid">
+      <div class="iot-content fade-up">
+        <div class="section-label"><i data-lucide="wifi" style="width:12px;height:12px"></i> IoT Integration</div>
+        <h2 class="section-title" style="color:#fff">Real-Time Water Quality<br><span>Monitoring with IoT</span></h2>
+        <p>Integrate a smart IoT device at your station to continuously monitor six critical water parameters and share live data with your customers — proving safety in real time.</p>
+        <div class="iot-params">
+          <div class="iot-param">
+            <div class="ip-icon"><i data-lucide="flask-conical"></i></div>
+            <div class="ip-label">pH Level</div>
+            <div class="ip-val">7.2</div>
+            <div class="ip-status">✓ Optimal Range</div>
+          </div>
+          <div class="iot-param">
+            <div class="ip-icon"><i data-lucide="droplets"></i></div>
+            <div class="ip-label">TDS (ppm)</div>
+            <div class="ip-val">248</div>
+            <div class="ip-status">✓ Safe</div>
+          </div>
+          <div class="iot-param">
+            <div class="ip-icon"><i data-lucide="eye"></i></div>
+            <div class="ip-label">Turbidity (NTU)</div>
+            <div class="ip-val">0.8</div>
+            <div class="ip-status">✓ Crystal Clear</div>
+          </div>
+          <div class="iot-param">
+            <div class="ip-icon"><i data-lucide="thermometer"></i></div>
+            <div class="ip-label">Temperature (°C)</div>
+            <div class="ip-val">25°C</div>
+            <div class="ip-status">✓ Normal</div>
+          </div>
+          <div class="iot-param">
+            <div class="ip-icon"><i data-lucide="sun"></i></div>
+            <div class="ip-label">UV Intensity</div>
+            <div class="ip-val">Active</div>
+            <div class="ip-status">✓ Sterilizing</div>
+          </div>
+          <div class="iot-param">
+            <div class="ip-icon"><i data-lucide="gauge"></i></div>
+            <div class="ip-label">Flow Rate (L/min)</div>
+            <div class="ip-val">2.4</div>
+            <div class="ip-status">✓ Normal Flow</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="iot-device fade-right fade-up-delay-2">
+        <div class="iot-device-top">
+          <div class="iot-device-title">DropPoint IoT Monitor</div>
+          <div class="iot-live-badge"><div class="iot-live-dot"></div> Live</div>
+        </div>
+        <div class="iot-gauge-row">
+          <!-- pH Gauge -->
+          <div class="iot-gauge">
+            <div class="gauge-ring">
+              <svg class="gauge-svg" width="64" height="64" viewBox="0 0 64 64">
+                <circle class="gauge-bg" cx="32" cy="32" r="27"/>
+                <circle class="gauge-fill" cx="32" cy="32" r="27" stroke="#06b6d4" stroke-dasharray="169.6" stroke-dashoffset="47"/>
+              </svg>
+              <div class="gauge-text">7.2</div>
+            </div>
+            <div class="gauge-label">pH</div>
+            <div class="gauge-unit" style="color:#06b6d4">Optimal</div>
+          </div>
+          <!-- TDS Gauge -->
+          <div class="iot-gauge">
+            <div class="gauge-ring">
+              <svg class="gauge-svg" width="64" height="64" viewBox="0 0 64 64">
+                <circle class="gauge-bg" cx="32" cy="32" r="27"/>
+                <circle class="gauge-fill" cx="32" cy="32" r="27" stroke="#2563eb" stroke-dasharray="169.6" stroke-dashoffset="88"/>
+              </svg>
+              <div class="gauge-text" style="font-size:.6rem">248</div>
+            </div>
+            <div class="gauge-label">TDS</div>
+            <div class="gauge-unit" style="color:#2563eb">ppm</div>
+          </div>
+          <!-- Turbidity Gauge -->
+          <div class="iot-gauge">
+            <div class="gauge-ring">
+              <svg class="gauge-svg" width="64" height="64" viewBox="0 0 64 64">
+                <circle class="gauge-bg" cx="32" cy="32" r="27"/>
+                <circle class="gauge-fill" cx="32" cy="32" r="27" stroke="#10b981" stroke-dasharray="169.6" stroke-dashoffset="143"/>
+              </svg>
+              <div class="gauge-text" style="font-size:.6rem">0.8</div>
+            </div>
+            <div class="gauge-label">NTU</div>
+            <div class="gauge-unit" style="color:#10b981">Clear</div>
+          </div>
+        </div>
+        <div class="iot-timeline">
+          <div class="iot-timeline-label">pH — Last 24 Hours</div>
+          <div class="timeline-chart" id="iotChart"></div>
+        </div>
+        <div style="margin-top:16px;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.2);border-radius:10px;padding:14px;display:flex;align-items:center;gap:12px">
+          <div style="width:36px;height:36px;background:rgba(16,185,129,.2);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><i data-lucide="shield-check" style="width:18px;height:18px;color:#10b981"></i></div>
+          <div>
+            <div style="font-size:.75rem;font-weight:700;color:#10b981">Water Safety Score: 98/100</div>
+            <div style="font-size:.68rem;color:rgba(255,255,255,.4);margin-top:2px">All parameters within safe thresholds</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Wave -->
+<div class="wave" style="background:linear-gradient(135deg,#020c1b,#04254a)"><svg viewBox="0 0 1440 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,36 C360,0 1080,72 1440,36 L1440,74 L0,74 Z" fill="#f0f7ff"/></svg></div>
+
+<!-- ══════════════════════════════════════════
+     PRICING SECTION
+══════════════════════════════════════════ -->
+<section id="pricing">
+  <div class="section-inner">
+    <div class="section-header text-center fade-up">
+      <div class="section-label"><i data-lucide="tag" style="width:12px;height:12px"></i> Pricing</div>
+      <h2 class="section-title">Simple Pricing That <span>Grows With Your Station</span></h2>
+      <p class="section-sub">Start free. Scale as you grow. No hidden fees — every plan charges only ₱1 per successfully delivered gallon.</p>
+    </div>
+    <div class="pricing-grid">
+      <!-- Free -->
+      <div class="price-card scale-in">
+        <div class="price-plan">Starter</div>
+        <div class="price-name">Free</div>
+        <div class="price-amount">
+          <span class="price-main">₱0</span>
+          <span class="price-period"> / month</span>
+        </div>
+        <div class="price-note">
+          + <strong>₱1</strong> per successfully delivered gallon only
+        </div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li><span class="pf-check"><i data-lucide="check" style="width:10px;height:10px"></i></span>Station listing on map</li>
+          <li><span class="pf-check"><i data-lucide="check" style="width:10px;height:10px"></i></span>Online order management</li>
+          <li><span class="pf-check"><i data-lucide="check" style="width:10px;height:10px"></i></span>In-app messaging with customers</li>
+          <li><span class="pf-check"><i data-lucide="check" style="width:10px;height:10px"></i></span>Customer reviews & ratings</li>
+          <li><span class="pf-check"><i data-lucide="check" style="width:10px;height:10px"></i></span>Real-time delivery tracking</li>
+          <li><span class="pf-check"><i data-lucide="check" style="width:10px;height:10px"></i></span>Permit & certificate display</li>
+          <li><span class="pf-check"><i data-lucide="check" style="width:10px;height:10px"></i></span>Transaction history</li>
+        </ul>
+        <div class="price-cta">
+          <a href="admin/login.html" class="btn btn-outline" style="width:100%;justify-content:center;color:var(--blue);border-color:var(--border)">Get Started Free</a>
+        </div>
+      </div>
+
+      <!-- Smart Station (Featured) -->
+      <div class="price-card featured scale-in fade-up-delay-1">
+        <div class="price-badge">⭐ Most Popular</div>
+        <div class="price-plan">Smart Station</div>
+        <div class="price-name">Smart</div>
+        <div class="price-amount">
+          <span class="price-main">₱15,000</span>
+        </div>
+        <div class="price-note">
+          One-time setup fee · + ₱1 per delivered gallon
+        </div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li><span class="pf-check"><i data-lucide="check" style="width:10px;height:10px"></i></span>Everything in Free</li>
+          <li><span class="pf-check"><i data-lucide="check" style="width:10px;height:10px"></i></span>IoT device integration</li>
+          <li><span class="pf-check"><i data-lucide="check" style="width:10px;height:10px"></i></span>Real-time water quality monitoring</li>
+          <li><span class="pf-check"><i data-lucide="check" style="width:10px;height:10px"></i></span>pH, TDS, turbidity, temp display</li>
+          <li><span class="pf-check"><i data-lucide="check" style="width:10px;height:10px"></i></span>Basic sales statistics</li>
+          <li><span class="pf-check"><i data-lucide="check" style="width:10px;height:10px"></i></span>Quality badge on listing</li>
+          <li><span class="pf-check"><i data-lucide="check" style="width:10px;height:10px"></i></span>Enhanced customer trust signals</li>
+        </ul>
+        <div class="price-cta">
+          <a href="#cta" class="btn btn-primary" style="width:100%;justify-content:center">Contact for Pricing</a>
+        </div>
+      </div>
+
+      <!-- Premium Station -->
+      <div class="price-card scale-in fade-up-delay-2">
+        <div class="price-plan">Premium Station</div>
+        <div class="price-name">Premium</div>
+        <div class="price-amount">
+          <span class="price-main">₱23,000</span>
+        </div>
+        <div class="price-note">
+          One-time setup fee · + ₱1 per delivered gallon
+        </div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li><span class="pf-check"><i data-lucide="check" style="width:10px;height:10px"></i></span>Everything in Smart Station</li>
+          <li><span class="pf-check"><i data-lucide="check" style="width:10px;height:10px"></i></span>Advanced sales insights & reports</li>
+          <li><span class="pf-check"><i data-lucide="check" style="width:10px;height:10px"></i></span>Priority search placement in app</li>
+          <li><span class="pf-check"><i data-lucide="check" style="width:10px;height:10px"></i></span>Highlighted station badge</li>
+          <li><span class="pf-check"><i data-lucide="check" style="width:10px;height:10px"></i></span>Enhanced map visibility</li>
+          <li><span class="pf-check"><i data-lucide="check" style="width:10px;height:10px"></i></span>Dedicated growth support</li>
+          <li><span class="pf-check"><i data-lucide="check" style="width:10px;height:10px"></i></span>Early access to new features</li>
+        </ul>
+        <div class="price-cta">
+          <a href="#cta" class="btn btn-outline" style="width:100%;justify-content:center;color:var(--blue);border-color:var(--border)">Contact for Pricing</a>
+        </div>
+      </div>
+    </div>
+    <p class="per-gallon-note fade-up">
+      💧 <strong>All plans include:</strong> Only ₱1 is charged per successfully delivered gallon. No monthly fees for the Free plan. Transparent, fair, and performance-based pricing.
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     VIDEO SECTION
+══════════════════════════════════════════ -->
+<section id="video">
+  <div class="section-header text-center fade-up" style="padding:0 5% 48px">
+    <div class="section-label" style="background:rgba(34,211,238,.1);border-color:rgba(34,211,238,.2);color:var(--cyan);margin:0 auto 16px">
+      <i data-lucide="play-circle" style="width:12px;height:12px"></i>
+      Promotional Video
+    </div>
+
+    <h2 class="section-title" style="color:#fff">
+      See DropPoint <span>in Action</span>
+    </h2>
+
+    <p class="section-sub" style="color:rgba(255,255,255,.5);margin:0 auto">
+      Watch how DropPoint transforms water delivery and station management for everyone.
+    </p>
+  </div>
+
+  <div class="video-wrapper fade-up">
+    <iframe 
+      src="https://www.youtube.com/embed/4rumCv7gjeE"
+      title="DropPoint Promotional Video"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen>
+    </iframe>
+  </div>
+</section>
+
+<!-- Wave -->
+<div class="wave" style="background:var(--deep)"><svg viewBox="0 0 1440 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,36 C240,72 480,0 720,36 C960,72 1200,0 1440,36 L1440,74 L0,74 Z" fill="#ffffff"/></svg></div>
+
+<!-- ══════════════════════════════════════════
+     TRUST SECTION
+══════════════════════════════════════════ -->
+<section id="trust">
+  <div class="section-inner">
+    <div class="section-header text-center fade-up">
+      <div class="section-label"><i data-lucide="shield" style="width:12px;height:12px"></i> Trust & Safety</div>
+      <h2 class="section-title">Built on <span>Trust, Transparency,</span><br>and Reliability</h2>
+      <p class="section-sub">Every feature in DropPoint is designed to give customers confidence and help stations prove their quality.</p>
+    </div>
+    <div class="trust-grid">
+      <div class="trust-card fade-up">
+        <div class="trust-card-icon"><i data-lucide="badge-check"></i></div>
+        <h3>Verified Permits</h3>
+        <p>Every listed station undergoes permit and business license verification before going live.</p>
+      </div>
+      <div class="trust-card fade-up fade-up-delay-1">
+        <div class="trust-card-icon"><i data-lucide="flask-conical"></i></div>
+        <h3>Lab Test Results</h3>
+        <p>Stations share official water quality test reports so customers can read them anytime.</p>
+      </div>
+      <div class="trust-card fade-up fade-up-delay-2">
+        <div class="trust-card-icon"><i data-lucide="wifi"></i></div>
+        <h3>IoT Live Monitoring</h3>
+        <p>Smart Station and Premium plans display real-time water parameter readings on the listing.</p>
+      </div>
+      <div class="trust-card fade-up fade-up-delay-3">
+        <div class="trust-card-icon"><i data-lucide="star"></i></div>
+        <h3>Verified Reviews</h3>
+        <p>Only customers who completed a delivery can leave a review — no fake ratings, ever.</p>
+      </div>
+      <div class="trust-card fade-up fade-up-delay-4">
+        <div class="trust-card-icon"><i data-lucide="truck"></i></div>
+        <h3>Tracked Every Delivery</h3>
+        <p>Every gallon delivery is tracked end-to-end, timestamped, and logged in transaction history.</p>
+      </div>
+      <div class="trust-card fade-up">
+        <div class="trust-card-icon"><i data-lucide="lock"></i></div>
+        <h3>Secure Communication</h3>
+        <p>All messages between customers and station admins are private and protected in-platform.</p>
+      </div>
+    </div>
+    <!-- Reviews -->
+    <div class="trust-reviews fade-up">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <div class="review-text">"DropPoint made it so easy to find a trusted station near me. I love being able to see the water test results before ordering!"</div>
+        <div class="reviewer">
+          <div class="reviewer-avatar">MR</div>
+          <div><div class="reviewer-name">Maria Reyes</div><div class="reviewer-tag">Customer · Cebu City</div></div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <div class="review-text">"As a station owner, DropPoint helped me double my orders in 2 months. The dashboard is clean and easy to use every day."</div>
+        <div class="reviewer">
+          <div class="reviewer-avatar">BG</div>
+          <div><div class="reviewer-name">Ben Gonzales</div><div class="reviewer-tag">Station Owner · Davao</div></div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <div class="review-text">"The IoT monitoring feature is incredible. My customers can see the water quality live — they trust us so much more now."</div>
+        <div class="reviewer">
+          <div class="reviewer-avatar">LT</div>
+          <div><div class="reviewer-name">Lena Torres</div><div class="reviewer-tag">Station Admin · Manila</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Wave -->
+<div class="wave" style="background:#fff"><svg viewBox="0 0 1440 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,36 C360,0 1080,72 1440,36 L1440,74 L0,74 Z" fill="#f7fbff"/></svg></div>
+
+<!-- ══════════════════════════════════════════
+     FAQ SECTION
+══════════════════════════════════════════ -->
+<section id="faq">
+  <div class="section-inner">
+    <div class="section-header text-center fade-up">
+      <div class="section-label"><i data-lucide="help-circle" style="width:12px;height:12px"></i> FAQ</div>
+      <h2 class="section-title">Frequently Asked <span>Questions</span></h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item fade-up">
+        <div class="faq-q">How do I find water refilling stations near me?<div class="faq-q-icon"><i data-lucide="plus"></i></div></div>
+        <div class="faq-a"><p>Open the DropPoint app and allow location access. The map automatically shows all verified water refilling stations near you, sorted by distance, with pricing and ratings visible at a glance.</p></div>
+      </div>
+      <div class="faq-item fade-up fade-up-delay-1">
+        <div class="faq-q">Is DropPoint free for customers?<div class="faq-q-icon"><i data-lucide="plus"></i></div></div>
+        <div class="faq-a"><p>Yes! DropPoint is completely free to use as a customer. You only pay for the water you order, at the price set by your chosen station. No app subscription or hidden fees.</p></div>
+      </div>
+      <div class="faq-item fade-up fade-up-delay-2">
+        <div class="faq-q">How does the ₱1 per gallon charge work for station owners?<div class="faq-q-icon"><i data-lucide="plus"></i></div></div>
+        <div class="faq-a"><p>DropPoint charges station owners ₱1 only when a gallon is successfully delivered to a customer. If an order is cancelled or fails, no fee is charged. It's a performance-based model that rewards completed deliveries.</p></div>
+      </div>
+      <div class="faq-item fade-up fade-up-delay-3">
+        <div class="faq-q">What is the IoT monitoring feature?<div class="faq-q-icon"><i data-lucide="plus"></i></div></div>
+        <div class="faq-a"><p>Smart Station and Premium plan subscribers receive an IoT device that connects to their water system. It continuously measures pH, TDS, turbidity, temperature, UV intensity, and flow rate — displaying live readings on their public DropPoint listing so customers can trust the water quality.</p></div>
+      </div>
+      <div class="faq-item fade-up fade-up-delay-4">
+        <div class="faq-q">How do I register my water station on DropPoint?<div class="faq-q-icon"><i data-lucide="plus"></i></div></div>
+        <div class="faq-a"><p>Simply sign up as a station owner, submit your business permit and sanitation certificate for verification, and set up your listing. Once approved, your station goes live on the map and customers can immediately start ordering from you.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ══════════════════════════════════════════
+     CTA SECTION
+══════════════════════════════════════════ -->
+<section id="cta">
+  <div class="hero-blob hero-blob-1" style="opacity:.15"></div>
+  <div class="hero-blob hero-blob-2" style="opacity:.15"></div>
+  <div class="cta-inner">
+    <div class="cta-grid">
+      <div class="cta-media fade-left">
+        <div class="cta-qr-card">
+          <img class="cta-qr" src="images/app-qr.png" alt="QR code to download the DropPoint mobile app" width="300" height="300">
+          <p class="cta-qr-label">Scan to download the app</p>
+        </div>
+      </div>
+      <div class="cta-content fade-right fade-up-delay-1">
+        <div class="hero-badge" style="margin:0 auto 24px;width:fit-content">
+          <span class="hero-badge-dot"></span>
+          Join Thousands of Happy Users
+        </div>
+        <h2 class="cta-title">Ready to Modernize<br><span>Water Delivery?</span></h2>
+        <p class="cta-sub">Join DropPoint and give customers a smarter, faster, and more trusted water service experience. Start free today.</p>
+        <div class="cta-actions">
+          <a href="#cta" class="btn btn-white btn-lg">
+            <i data-lucide="zap" style="width:18px;height:18px"></i>
+            Get Started Free
+          </a>
+          <a href="mailto:hello@droppoint.ph" class="btn btn-ghost btn-lg">
+            <i data-lucide="mail" style="width:18px;height:18px"></i>
+            Contact Us
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ══════════════════════════════════════════
+     CONTACT SECTION
+══════════════════════════════════════════ -->
+<section id="contact" style="background:#fff">
+  <div class="section-inner">
+    <div class="section-header text-center fade-up">
+      <div class="section-label"><i data-lucide="mail" style="width:12px;height:12px"></i> Contact Us</div>
+      <h2 class="section-title">Get in <span>Touch</span></h2>
+      <p class="section-sub">Have questions, partnership inquiries, or want to list your station? We'd love to hear from you.</p>
+    </div>
+    <div class="contact-grid">
+      <!-- Info cards -->
+      <div class="contact-info fade-left">
+        <div class="contact-card">
+          <div class="contact-card-icon"><i data-lucide="mail" style="width:20px;height:20px;color:#2563eb"></i></div>
+          <div>
+            <div class="contact-card-label">Email Us</div>
+            <a href="mailto:droppoint.official@gmail.com" class="contact-card-value">droppoint.official@gmail.com</a>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card-icon"><i data-lucide="phone" style="width:20px;height:20px;color:#06b6d4"></i></div>
+          <div>
+            <div class="contact-card-label">Call Us</div>
+            <a href="tel:+639631408718" class="contact-card-value">+63 963 140 8718</a>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card-icon"><i data-lucide="map-pin" style="width:20px;height:20px;color:#0d9488"></i></div>
+          <div>
+            <div class="contact-card-label">Location</div>
+            <div class="contact-card-value">Philippines 🇵🇭</div>
+          </div>
+        </div>
+        <!-- Social links -->
+        <div class="contact-socials">
+          <div class="contact-card-label" style="margin-bottom:14px">Follow Us</div>
+          <div style="display:flex;gap:12px">
+            <a href="#" class="contact-social-btn" style="--sc:#1877f2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+              Facebook
+            </a>
+            <a href="#" class="contact-social-btn" style="--sc:#e1306c">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+              Instagram
+            </a>
+            <a href="#" class="contact-social-btn" style="--sc:#1da1f2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+              Twitter
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact form -->
+      <form class="contact-form fade-right" onsubmit="handleContact(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Full Name</label>
+            <input type="text" class="form-input" placeholder="Juan dela Cruz" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email Address</label>
+            <input type="email" class="form-input" placeholder="juan@email.com" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Subject</label>
+          <select class="form-input">
+            <option>General Inquiry</option>
+            <option>Station Partnership</option>
+            <option>IoT Device Purchase</option>
+            <option>Technical Support</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Message</label>
+          <textarea class="form-input form-textarea" placeholder="Tell us how we can help you..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;padding:14px">
+          <i data-lucide="send" style="width:16px;height:16px"></i>
+          Send Message
+        </button>
+        <div id="contactSuccess" style="display:none;margin-top:14px;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.25);border-radius:10px;padding:12px 16px;font-size:.82rem;color:#059669;text-align:center">
+          ✓ Message sent! We'll get back to you within 24 hours.
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Wave -->
+<div class="wave" style="background:#fff"><svg viewBox="0 0 1440 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,36 C360,0 1080,72 1440,36 L1440,74 L0,74 Z" fill="#04111f"/></svg></div>
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-name">
+        <div class="nav-logo-icon" style="width:30px;height:30px;padding-right: 40px;"><img src="images/droppoint logo.png" alt="DropPoint Logo" style="width:40px;height:40px;object-fit:contain;filter:drop-shadow(0 2px 8px rgba(59,130,246,.4))"></div>
+        DropPoint
+      </div>
+      <p class="footer-brand-desc">Your all-in-one platform for clean water delivery and smarter water station management across the Philippines.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Platform</div>
+      <ul class="footer-links">
+        <li><a href="#features">Customer Features</a></li>
+        <li><a href="#business">For Station Owners</a></li>
+        <li><a href="#iot">IoT Monitoring</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Company</div>
+      <ul class="footer-links">
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Contact</div>
+      <ul class="footer-links">
+        <li><a href="mailto:droppoint.official@gmail.com">droppoint.official@gmail.com</a></li>
+        <li><a href="#">+63 963 140 8718</a></li>
+        <li><a href="#">Philippines</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 DropPoint. All rights reserved.</div>
+    <div class="social-links">
+      <a href="https://www.facebook.com/share/1J1ctHfgDi/" class="social-link" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+      <a href="#" class="social-link"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+      <a href="#" class="social-link"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg></a>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════════
+     TWEAKS PANEL
+══════════════════════════════════════════ -->
+<div class="tweaks-panel" id="tweaksPanel">
+  <div class="tweaks-header">
+    <div class="tweaks-title">⚙️ Tweaks</div>
+    <button class="tweaks-close" id="tweaksClose"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+  </div>
+  <div class="tweak-group">
+    <label class="tweak-label">Accent Theme</label>
+    <div class="tweak-options" id="themeOptions">
+      <button class="tweak-opt active" data-theme="ocean">Ocean</button>
+      <button class="tweak-opt" data-theme="midnight">Midnight</button>
+      <button class="tweak-opt" data-theme="teal">Teal</button>
+    </div>
+  </div>
+  <div class="tweak-group">
+    <label class="tweak-label">Hero Style</label>
+    <div class="tweak-options" id="heroOptions">
+      <button class="tweak-opt active" data-hero="dark">Dark</button>
+      <button class="tweak-opt" data-hero="deep">Deep</button>
+    </div>
+  </div>
+  <div class="tweak-group">
+    <label class="tweak-label">Card Radius</label>
+    <div class="tweak-options" id="radiusOptions">
+      <button class="tweak-opt active" data-radius="16">Rounded</button>
+      <button class="tweak-opt" data-radius="8">Sharp</button>
+      <button class="tweak-opt" data-radius="24">Pill</button>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+// ── Lucide icons ──
+lucide.createIcons();
+
+// ── Water droplet cursor ──
+(function initDropletCursor() {
+  if (window.matchMedia('(hover: none), (pointer: coarse)').matches) return;
+
+  const cursor = document.getElementById('dropletCursor');
+  const trail = document.getElementById('dropletTrail');
+  if (!cursor || !trail) return;
+
+  document.body.appendChild(cursor);
+  document.body.appendChild(trail);
+
+  let mx = window.innerWidth / 2, my = window.innerHeight / 2;
+  let cx = mx, cy = my, tx = mx, ty = my;
+  let lastX = mx, lastY = my;
+
+  document.addEventListener('mousemove', (e) => { mx = e.clientX; my = e.clientY; });
+
+  const hoverSel = 'a, button, [role="button"], .btn, .faq-q, input, textarea, select, label, .team-card, .hcard, .feat-card, .problem-card, .price-card, .trust-card, .review-card, .tweak-opt, .tweaks-close';
+  document.addEventListener('mouseover', (e) => {
+    if (e.target.closest(hoverSel)) cursor.classList.add('hover');
+  });
+  document.addEventListener('mouseout', (e) => {
+    if (e.target.closest && e.target.closest(hoverSel) && !e.relatedTarget?.closest?.(hoverSel)) {
+      cursor.classList.remove('hover');
+    }
+  });
+  document.addEventListener('mousedown', () => cursor.classList.add('click'));
+  document.addEventListener('mouseup', () => cursor.classList.remove('click'));
+  document.addEventListener('mouseleave', () => { cursor.style.opacity = '0'; trail.style.opacity = '0'; });
+  document.addEventListener('mouseenter', () => { cursor.style.opacity = '1'; trail.style.opacity = '.6'; });
+
+  function loop() {
+    cx += (mx - cx) * 0.35;
+    cy += (my - cy) * 0.35;
+    tx += (mx - tx) * 0.12;
+    ty += (my - ty) * 0.12;
+
+    const vx = mx - lastX, vy = my - lastY;
+    const speed = Math.min(Math.hypot(vx, vy), 30);
+    const tilt = Math.max(-25, Math.min(25, (vx + vy) * 0.6));
+
+    cursor.style.transform = `translate(${cx}px,${cy}px) translate(-50%,-50%) rotate(${tilt}deg)`;
+    trail.style.transform = `translate(${tx}px,${ty}px) translate(-50%,-50%) scale(${1 + speed * 0.04})`;
+
+    lastX = mx; lastY = my;
+    requestAnimationFrame(loop);
+  }
+  loop();
+
+  document.addEventListener('click', (e) => {
+    for (let i = 0; i < 5; i++) {
+      const d = document.createElement('div');
+      d.style.cssText = `position:fixed;left:${e.clientX}px;top:${e.clientY}px;width:6px;height:8px;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;background:radial-gradient(ellipse at 40% 35%,#fff,#22d3ee);pointer-events:none;z-index:99997;transform:translate(-50%,-50%);transition:transform .6s ease-out,opacity .6s`;
+      document.body.appendChild(d);
+      const ang = (Math.PI * 2 * i / 5) + Math.random() * 0.4;
+      const dist = 30 + Math.random() * 20;
+      requestAnimationFrame(() => {
+        d.style.left = (e.clientX + Math.cos(ang) * dist) + 'px';
+        d.style.top = (e.clientY + Math.sin(ang) * dist + 20) + 'px';
+        d.style.transform = 'translate(-50%,-50%) scale(.3)';
+        d.style.opacity = '0';
+      });
+      setTimeout(() => d.remove(), 700);
+    }
+  });
+})();
+
+// ── Navbar scroll ──
+const navbar = document.getElementById('navbar');
+const NAV_OFFSET = 72;
+
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// Smooth in-page nav without extra scroll past the footer
+document.querySelectorAll('a[href^="#"]').forEach((link) => {
+  link.addEventListener('click', (e) => {
+    const id = link.getAttribute('href').slice(1);
+    if (!id) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      history.replaceState(null, '', window.location.pathname);
+      return;
+    }
+    const target = document.getElementById(id);
+    if (!target) return;
+    e.preventDefault();
+    const menu = document.getElementById('navMenu');
+    const toggle = document.getElementById('navToggle');
+    if (menu?.classList.contains('open')) {
+      menu.classList.remove('open');
+      toggle?.setAttribute('aria-expanded', 'false');
+      toggle?.setAttribute('aria-label', 'Open menu');
+      navbar.classList.remove('menu-open');
+      document.body.classList.remove('nav-open');
+    }
+    const top = target.getBoundingClientRect().top + window.scrollY - NAV_OFFSET;
+    window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+    history.replaceState(null, '', '#' + id);
+  });
+});
+
+// ── Navbar scroll-spy ──
+(function initScrollSpy() {
+  const navLinks = Array.from(document.querySelectorAll('.nav-links a[href^="#"]'));
+  if (!navLinks.length) return;
+
+  const navAnchors = [
+    { nav: 'problem', startId: 'problem', endId: 'team' },
+    { nav: 'features', startId: 'features', endId: 'features' },
+    { nav: 'business', startId: 'business', endId: 'business' },
+    { nav: 'iot', startId: 'iot', endId: 'iot' },
+    { nav: 'pricing', startId: 'pricing', endId: 'pricing' },
+    { nav: 'faq', startId: 'faq', endId: 'faq' },
+    { nav: 'contact', startId: 'contact', endId: 'contact' },
+  ];
+
+  function bounds(id) {
+    const el = document.getElementById(id);
+    if (!el) return null;
+    const top = el.getBoundingClientRect().top + window.scrollY;
+    return { top, bottom: top + el.offsetHeight };
+  }
+
+  function setActive(navId) {
+    navLinks.forEach(l => {
+      l.classList.toggle('active', navId && l.getAttribute('href') === '#' + navId);
+    });
+  }
+
+  function updateActive() {
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) {
+      setActive('contact');
+      return;
+    }
+
+    const line = window.scrollY + 100;
+    let active = null;
+
+    for (const zone of navAnchors) {
+      const start = bounds(zone.startId);
+      const end = bounds(zone.endId);
+      if (!start || !end) continue;
+      if (line >= start.top && line < end.bottom) {
+        active = zone.nav;
+      }
+    }
+
+    setActive(active);
+  }
+
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => { updateActive(); ticking = false; });
+      ticking = true;
+    }
+  }, { passive: true });
+  window.addEventListener('resize', updateActive);
+  updateActive();
+})();
+
+// ── Hero cards entrance ──
+setTimeout(() => {
+  document.querySelectorAll('.hcard').forEach(c => c.classList.add('entered'));
+}, 300);
+
+// ── Mobile nav toggle ──
+(function initMobileNav() {
+  const toggle = document.getElementById('navToggle');
+  const menu = document.getElementById('navMenu');
+  const navbarEl = document.getElementById('navbar');
+  if (!toggle || !menu) return;
+
+  function closeMenu() {
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'Open menu');
+    menu.classList.remove('open');
+    navbarEl.classList.remove('menu-open');
+    document.body.classList.remove('nav-open');
+  }
+
+  toggle.addEventListener('click', () => {
+    const open = menu.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    navbarEl.classList.toggle('menu-open', open);
+    document.body.classList.toggle('nav-open', open);
+  });
+
+  menu.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+  window.addEventListener('resize', () => { if (window.innerWidth > 900) closeMenu(); });
+})();
+
+// ── Hero card mouse parallax (desktop only) ──
+const heroVisual = document.querySelector('.hero-visual');
+if (heroVisual && window.matchMedia('(min-width: 901px) and (hover: hover)').matches) {
+  document.addEventListener('mousemove', (e) => {
+    if (window.innerWidth <= 900) return;
+    const cx = window.innerWidth / 2, cy = window.innerHeight / 2;
+    const dx = (e.clientX - cx) / cx, dy = (e.clientY - cy) / cy;
+    const map = document.querySelector('.hcard-map');
+    const track = document.querySelector('.hcard-track');
+    const quality = document.querySelector('.hcard-quality');
+    if (map) map.style.transform = `translate(${dx * -10}px,${dy * -8}px)`;
+    if (track) track.style.transform = `translate(${dx * 8}px,${dy * 10}px)`;
+    if (quality) quality.style.transform = `translate(${dx * -6}px,${dy * 6}px)`;
+  });
+}
+
+// ── Scroll reveal (fade-up, fade-left, fade-right, scale-in) ──
+const revealEls = document.querySelectorAll('.fade-up,.fade-left,.fade-right,.scale-in');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+}, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
+revealEls.forEach(el => io.observe(el));
+
+// ── Dashboard & IoT enter trigger ──
+const enterIO = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('entered'); enterIO.unobserve(e.target); } });
+}, { threshold: 0.25 });
+document.querySelectorAll('.biz-dashboard,.iot-device').forEach(el => enterIO.observe(el));
+
+// ── Stat counter animation ──
+function animateCounter(el, target, suffix, duration) {
+  const start = performance.now();
+  const isFloat = target % 1 !== 0;
+  const step = (now) => {
+    const p = Math.min((now - start) / duration, 1);
+    const ease = 1 - Math.pow(1 - p, 3);
+    const val = isFloat ? (target * ease).toFixed(1) : Math.floor(target * ease);
+    el.textContent = val + suffix;
+    if (p < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+const statsIO = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const stats = [
+      { el: document.querySelectorAll('.hero-stat-value')[0], val: 500, suffix: '+' },
+      { el: document.querySelectorAll('.hero-stat-value')[1], val: 12,  suffix: 'k+' },
+      { el: document.querySelectorAll('.hero-stat-value')[2], val: 4.9, suffix: '★' },
+    ];
+    stats.forEach((s, i) => setTimeout(() => animateCounter(s.el, s.val, s.suffix, 1200), i * 120));
+    statsIO.unobserve(e.target);
+  });
+}, { threshold: 0.5 });
+const statsEl = document.querySelector('.hero-stats');
+if (statsEl) statsIO.observe(statsEl);
+
+// ── Gauge animation on enter ──
+const gaugeIO = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.querySelectorAll('.gauge-fill').forEach(g => {
+      const target = parseFloat(g.getAttribute('stroke-dashoffset') || '88');
+      g.style.strokeDashoffset = '169.6';
+      requestAnimationFrame(() => { setTimeout(() => { g.style.strokeDashoffset = target; }, 100); });
+    });
+    gaugeIO.unobserve(e.target);
+  });
+}, { threshold: 0.3 });
+document.querySelectorAll('.iot-device').forEach(el => gaugeIO.observe(el));
+
+// ── Chart bars ──
+const barData = [38, 52, 45, 68, 74, 61, 80, 92, 85, 78, 88, 96];
+const chartBars = document.getElementById('chartBars');
+if (chartBars) {
+  barData.forEach((v, i) => {
+    const bar = document.createElement('div');
+    bar.className = 'chart-bar' + (i === barData.length - 1 ? ' active' : '');
+    bar.style.height = v + '%';
+    chartBars.appendChild(bar);
+  });
+}
+
+// ── IoT timeline chart ──
+const iotChartEl = document.getElementById('iotChart');
+const phData = [72, 71, 73, 72, 74, 73, 72, 71, 72, 73, 72, 72, 73, 74, 72, 71, 72, 73, 71, 72, 73, 72, 74, 72];
+const iotColors = ['#06b6d4', '#2563eb', '#0d9488', '#06b6d4', '#3b82f6'];
+if (iotChartEl) {
+  phData.forEach((v, i) => {
+    const bar = document.createElement('div');
+    bar.className = 'tc-bar';
+    const h = ((v - 68) / 10) * 100;
+    bar.style.height = Math.max(20, h) + '%';
+    bar.style.background = iotColors[i % iotColors.length];
+    bar.style.flex = '1';
+    iotChartEl.appendChild(bar);
+  });
+}
+
+// ── Contact form ──
+function handleContact(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('button[type="submit"]');
+  btn.textContent = 'Sending…';
+  btn.disabled = true;
+  setTimeout(() => {
+    document.getElementById('contactSuccess').style.display = 'block';
+    btn.innerHTML = '<i data-lucide="check" style="width:16px;height:16px"></i> Sent!';
+    lucide.createIcons();
+  }, 1200);
+}
+
+// ── FAQ accordion ──
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+
+// ── Tweaks panel ──
+const TWEAKS = /*EDITMODE-BEGIN*/{
+  "theme": "ocean",
+  "hero": "dark",
+  "radius": "16"
+}/*EDITMODE-END*/;
+
+const themes = {
+  ocean: { '--blue': '#1045b8', '--mid': '#2563eb', '--bright': '#3b82f6', '--aqua': '#06b6d4', '--grad': 'linear-gradient(135deg,#1045b8 0%,#0891b2 100%)', '--grad-hero': 'linear-gradient(135deg,#020c1b 0%,#071e3d 35%,#0c3566 65%,#0369a1 100%)' },
+  midnight: { '--blue': '#4f46e5', '--mid': '#6366f1', '--bright': '#818cf8', '--aqua': '#06b6d4', '--grad': 'linear-gradient(135deg,#4f46e5 0%,#0891b2 100%)', '--grad-hero': 'linear-gradient(135deg,#050311 0%,#130d3d 35%,#1e1560 65%,#0369a1 100%)' },
+  teal: { '--blue': '#0d766e', '--mid': '#0d9488', '--bright': '#14b8a6', '--aqua': '#06b6d4', '--grad': 'linear-gradient(135deg,#0d766e 0%,#0891b2 100%)', '--grad-hero': 'linear-gradient(135deg,#011614 0%,#032e2a 35%,#064e48 65%,#0369a1 100%)' }
+};
+const heroes = {
+  dark: 'linear-gradient(135deg,#020c1b 0%,#071e3d 35%,#0c3566 65%,#0369a1 100%)',
+  deep: 'linear-gradient(135deg,#000510 0%,#030f2e 40%,#060d47 70%,#0a1a6b 100%)'
+};
+
+function applyTweaks(t) {
+  const root = document.documentElement;
+  if (t.theme && themes[t.theme]) Object.entries(themes[t.theme]).forEach(([k, v]) => root.style.setProperty(k, v));
+  if (t.hero && heroes[t.hero]) root.style.setProperty('--grad-hero', heroes[t.hero]);
+  if (t.radius) root.style.setProperty('--r', t.radius + 'px');
+}
+applyTweaks(TWEAKS);
+
+const panel = document.getElementById('tweaksPanel');
+document.getElementById('tweaksClose').addEventListener('click', () => {
+  panel.classList.remove('visible');
+  window.parent.postMessage({ type: '__edit_mode_dismissed' }, '*');
+});
+document.querySelectorAll('[data-theme]').forEach(btn => {
+  btn.classList.toggle('active', btn.dataset.theme === TWEAKS.theme);
+  btn.addEventListener('click', () => {
+    TWEAKS.theme = btn.dataset.theme;
+    document.querySelectorAll('[data-theme]').forEach(b => b.classList.toggle('active', b === btn));
+    applyTweaks(TWEAKS);
+    window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { theme: TWEAKS.theme } }, '*');
+  });
+});
+document.querySelectorAll('[data-hero]').forEach(btn => {
+  btn.classList.toggle('active', btn.dataset.hero === TWEAKS.hero);
+  btn.addEventListener('click', () => {
+    TWEAKS.hero = btn.dataset.hero;
+    document.querySelectorAll('[data-hero]').forEach(b => b.classList.toggle('active', b === btn));
+    applyTweaks(TWEAKS);
+    window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { hero: TWEAKS.hero } }, '*');
+  });
+});
+document.querySelectorAll('[data-radius]').forEach(btn => {
+  btn.classList.toggle('active', btn.dataset.radius === TWEAKS.radius);
+  btn.addEventListener('click', () => {
+    TWEAKS.radius = btn.dataset.radius;
+    document.querySelectorAll('[data-radius]').forEach(b => b.classList.toggle('active', b === btn));
+    applyTweaks(TWEAKS);
+    window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { radius: TWEAKS.radius } }, '*');
+  });
+});
+
+window.addEventListener('message', e => {
+  if (e.data && e.data.type === '__activate_edit_mode') panel.classList.add('visible');
+  if (e.data && e.data.type === '__deactivate_edit_mode') panel.classList.remove('visible');
+});
+window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+</script>
+</body>
+</html>
